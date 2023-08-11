@@ -27,7 +27,8 @@ class SearchTextField extends StatelessWidget {
     this.isBorder = false,
     this.isRead = false,
     this.autofocus = false,
-     this.onTap, this.isSearchIcon = true,
+    this.onTap,
+    this.isSearchIcon = true,
   }) : super(key: key);
 
   @override
@@ -51,11 +52,13 @@ class SearchTextField extends StatelessWidget {
         ),
         hintText: hintText ?? AppHelpers.getTranslation(TrKeys.searchProducts),
         contentPadding: REdgeInsets.symmetric(horizontal: 15, vertical: 14),
-        prefixIcon: isSearchIcon ? Icon(
-          FlutterRemix.search_2_line,
-          size: 20.r,
-          color: Style.black,
-        ) : null,
+        prefixIcon: isSearchIcon
+            ? Icon(
+                FlutterRemix.search_2_line,
+                size: 20.r,
+                color: Style.black,
+              )
+            : null,
         suffixIcon: suffixIcon,
         fillColor: bgColor,
         filled: true,

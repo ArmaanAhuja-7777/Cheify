@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Style {
   Style._();
-  static const Color bottomNavigationBarColor = Color(0xFF191919);
+  static const Color bottomNavigationBarColor =
+      Color.fromARGB(255, 247, 162, 4);
   static const Color enterOrderButton = Color(0xFFF4F8F7);
   static const Color tabBarBorderColor = Color(0xFFDEDFE1);
   static const Color orderButtonColor = Color(0xFF323232);
@@ -16,9 +17,9 @@ class Style {
   static const Color blackWithOpacity = Color(0x20232B2F);
   static const Color whiteWithOpacity = Color(0x90FFFFFF);
   static const Color dontHaveAccBtnBack = Color(0xFFF8F8F8);
-  static const Color mainBack = Color(0xFFF4F4F4);
+  static const Color mainBack = Color.fromARGB(255, 255, 170, 0);
   static const Color borderColor = Color(0xFFE6E6E6);
-  static const Color brandGreen = Color(0xFF83EA00);
+  static const Color brandGreen = Color.fromARGB(255, 234, 140, 0);
   static const Color textGrey = Color(0xFF898989);
   static const Color recommendBg = Color(0xFFE8C7B0);
   static const Color bannerBg = Color(0xFFF3DED4);
@@ -33,7 +34,7 @@ class Style {
   static const Color starColor = Color(0xFFFFA826);
   static const Color dragElement = Color(0xFFC4C5C7);
   static const Color addProductSearchedToBasket = Color.fromRGBO(0, 0, 0, 0.62);
-  static const Color rate = Color(0xFFFFB800);
+  static const Color rate = Color.fromARGB(255, 255, 38, 0);
   static const Color red = Color(0xFFFF3D00);
   static const Color redBg = Color(0xFFFFF2EE);
   static const Color blue = Color(0xFF03758E);
@@ -81,11 +82,10 @@ class Style {
 
   /// font style
 
-  static interBold({
-    double size = 18,
-    Color color = Style.black,
-    double letterSpacing = 0
-    }) =>
+  static interBold(
+          {double size = 18,
+          Color color = Style.black,
+          double letterSpacing = 0}) =>
       GoogleFonts.inter(
           fontSize: size.sp,
           fontWeight: FontWeight.bold,
@@ -93,11 +93,11 @@ class Style {
           letterSpacing: letterSpacing.sp,
           decoration: TextDecoration.none);
 
-  static interSemi({
-    double size = 18,
-    Color color = Style.black,
-    TextDecoration decoration =  TextDecoration.none,
-    double letterSpacing = 0}) =>
+  static interSemi(
+          {double size = 18,
+          Color color = Style.black,
+          TextDecoration decoration = TextDecoration.none,
+          double letterSpacing = 0}) =>
       GoogleFonts.inter(
           fontSize: size.sp,
           fontWeight: FontWeight.w700,
@@ -105,11 +105,11 @@ class Style {
           letterSpacing: letterSpacing.sp,
           decoration: decoration);
 
-  static interNoSemi({
-    double size = 18,
-    Color color = Style.black,
-    TextDecoration decoration =  TextDecoration.none,
-    double letterSpacing = 0}) =>
+  static interNoSemi(
+          {double size = 18,
+          Color color = Style.black,
+          TextDecoration decoration = TextDecoration.none,
+          double letterSpacing = 0}) =>
       GoogleFonts.inter(
           fontSize: size.sp,
           fontWeight: FontWeight.w600,
@@ -118,11 +118,10 @@ class Style {
           decoration: decoration);
 
   static interNormal(
-      {double size = 16,
-        Color color = Style.black,
-        TextDecoration textDecoration = TextDecoration.none,
-        double letterSpacing = 0
-      }) =>
+          {double size = 16,
+          Color color = Style.black,
+          TextDecoration textDecoration = TextDecoration.none,
+          double letterSpacing = 0}) =>
       GoogleFonts.inter(
           fontSize: size.sp,
           fontWeight: FontWeight.w500,
@@ -131,16 +130,14 @@ class Style {
           decoration: textDecoration);
 
   static interRegular(
-      {double size = 16,
-        Color color = Style.black,
-        TextDecoration textDecoration = TextDecoration.none,
-        double letterSpacing = 0}) =>
+          {double size = 16,
+          Color color = Style.black,
+          TextDecoration textDecoration = TextDecoration.none,
+          double letterSpacing = 0}) =>
       GoogleFonts.inter(
           fontSize: size,
           fontWeight: FontWeight.w400,
           color: color,
           letterSpacing: letterSpacing.sp,
           decoration: textDecoration);
-
-
 }

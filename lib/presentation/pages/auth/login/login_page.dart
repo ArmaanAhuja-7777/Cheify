@@ -106,7 +106,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               image: AssetImage(
                 "assets/images/splash.png",
               ),
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             )),
             child: SafeArea(
               child: Padding(
@@ -163,7 +163,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                 isDarkMode: isDarkMode,
                                 paddingTop: MediaQuery.of(context).padding.top);
                           },
-                          background: Style.transparent,
+                          background: Color.fromARGB(100, 0, 0, 0),
                           textColor: Style.white,
                           borderColor: Style.white,
                         ),

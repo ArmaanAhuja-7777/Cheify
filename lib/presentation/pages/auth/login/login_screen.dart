@@ -50,8 +50,9 @@ class LoginScreen extends ConsumerWidget {
                         title: AppHelpers.getTranslation(TrKeys.login),
                       ),
                       OutlinedBorderTextField(
-                        label: AppHelpers.getTranslation(TrKeys.emailOrPhoneNumber)
-                            .toUpperCase(),
+                        label:
+                            AppHelpers.getTranslation(TrKeys.emailOrPhoneNumber)
+                                .toUpperCase(),
                         onChanged: event.setEmail,
                         isError: state.isEmailNotValid,
                         descriptionText: state.isEmailNotValid

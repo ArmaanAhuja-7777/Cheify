@@ -6,7 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app_constants.dart';
 
-
 class LocalStorage {
   static SharedPreferences? _preferences;
 
@@ -35,6 +34,7 @@ class LocalStorage {
   Future<void> _init() async {
     _preferences = await SharedPreferences.getInstance();
   }
+
   Future<void> setToken(String? token) async {
     if (_preferences != null) {
       await _preferences!.setString(AppConstants.keyToken, token ?? '');
@@ -51,7 +51,8 @@ class LocalStorage {
     }
   }
 
-  String getLastName() => _preferences?.getString(AppConstants.keyLastName) ?? "";
+  String getLastName() =>
+      _preferences?.getString(AppConstants.keyLastName) ?? "";
 
   void deleteLastName() => _preferences?.remove(AppConstants.keyLastName);
 
@@ -61,10 +62,10 @@ class LocalStorage {
     }
   }
 
-  String getFirstName() => _preferences?.getString(AppConstants.keyFirstName) ?? "";
+  String getFirstName() =>
+      _preferences?.getString(AppConstants.keyFirstName) ?? "";
 
   void deleteFirstName() => _preferences?.remove(AppConstants.keyFirstName);
-
 
   Future<void> setUserId(int? image) async {
     if (_preferences != null) {
@@ -76,14 +77,14 @@ class LocalStorage {
 
   void deleteUserId() => _preferences?.remove(AppConstants.keyUserId);
 
-
   Future<void> setProfileImage(String? image) async {
     if (_preferences != null) {
       await _preferences!.setString(AppConstants.keyUserImage, image ?? '');
     }
   }
 
-  String getProfileImage() => _preferences?.getString(AppConstants.keyUserImage) ?? '';
+  String getProfileImage() =>
+      _preferences?.getString(AppConstants.keyUserImage) ?? '';
 
   void deleteProfileImage() => _preferences?.remove(AppConstants.keyUserImage);
 
@@ -101,9 +102,7 @@ class LocalStorage {
     return strings;
   }
 
-  void deleteSearchList() =>
-      _preferences?.remove(AppConstants.keySearchStores);
-
+  void deleteSearchList() => _preferences?.remove(AppConstants.keySearchStores);
 
   Future<void> setSavedShopsList(List<int> ids) async {
     if (_preferences != null) {
@@ -116,34 +115,33 @@ class LocalStorage {
   List<int> getSavedShopsList() {
     final List<String> strings =
         _preferences?.getStringList(AppConstants.keySavedStores) ?? [];
-    if(strings.isNotEmpty){
+    if (strings.isNotEmpty) {
       final List<int> ids = strings.map((e) => int.parse(e)).toList();
       return ids;
-    }else{
+    } else {
       return [];
     }
-
   }
 
   void deleteSavedShopsList() =>
       _preferences?.remove(AppConstants.keySavedStores);
 
-
   Future<void> setAddressSelected(AddressData data) async {
     if (_preferences != null) {
-      await _preferences!.setString(AppConstants.keyAddressSelected, jsonEncode(data.toJson()));
+      await _preferences!.setString(
+          AppConstants.keyAddressSelected, jsonEncode(data.toJson()));
     }
   }
 
   AddressData? getAddressSelected() {
-    String dataString =  _preferences?.getString(AppConstants.keyAddressSelected) ?? "";
-    if(dataString.isNotEmpty){
+    String dataString =
+        _preferences?.getString(AppConstants.keyAddressSelected) ?? "";
+    if (dataString.isNotEmpty) {
       AddressData data = AddressData.fromJson(jsonDecode(dataString));
       return data;
-    }else{
+    } else {
       return null;
     }
-
   }
 
   void deleteAddressSelected() =>
@@ -151,16 +149,19 @@ class LocalStorage {
 
   Future<void> setAddressInformation(AddressInformation data) async {
     if (_preferences != null) {
-      await _preferences!.setString(AppConstants.keyAddressInformation, jsonEncode(data.toJson()));
+      await _preferences!.setString(
+          AppConstants.keyAddressInformation, jsonEncode(data.toJson()));
     }
   }
 
   AddressInformation? getAddressInformation() {
-    String dataString =  _preferences?.getString(AppConstants.keyAddressInformation) ?? "";
-    if(dataString.isNotEmpty){
-      AddressInformation data = AddressInformation.fromJson(jsonDecode(dataString));
+    String dataString =
+        _preferences?.getString(AppConstants.keyAddressInformation) ?? "";
+    if (dataString.isNotEmpty) {
+      AddressInformation data =
+          AddressInformation.fromJson(jsonDecode(dataString));
       return data;
-    }else{
+    } else {
       return null;
     }
   }
@@ -189,14 +190,14 @@ class LocalStorage {
   }
 
   CurrencyData getSelectedCurrency() {
-    String json =  _preferences?.getString(AppConstants.keySelectedCurrency) ?? '';
-    if(json.isEmpty){
+    String json =
+        _preferences?.getString(AppConstants.keySelectedCurrency) ?? '';
+    if (json.isEmpty) {
       return CurrencyData();
-    }else{
+    } else {
       final map = jsonDecode(json);
       return CurrencyData.fromJson(map);
     }
-
   }
 
   void deleteSelectedCurrency() =>
@@ -222,7 +223,6 @@ class LocalStorage {
   }
 
   void deleteWalletData() => _preferences?.remove(AppConstants.keyWalletData);
-
 
   Future<void> setSettingsList(List<SettingsData> settings) async {
     if (_preferences != null) {
@@ -311,7 +311,6 @@ class LocalStorage {
   }
 
   void deleteLanguage() => _preferences?.remove(AppConstants.keyLanguageData);
-
 
   Future<void> setLangLtr(int? backward) async {
     if (_preferences != null) {

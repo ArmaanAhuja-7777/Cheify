@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "249585646098",
+    "project_id": "cheify",
+    "storage_bucket": "cheify.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249585646098:android:7853e77a3e40571602b6cb",
+        "android_client_info": {
+          "package_name": "com.cheify.service.food"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249585646098-b815s5ntb6b3id373judh6h8d37ocb1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7wFrcTvgVOZFlTg8SMzagnLsD9wkfCTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249585646098-b815s5ntb6b3id373judh6h8d37ocb1d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

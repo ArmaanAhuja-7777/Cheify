@@ -22,7 +22,7 @@ class SocialButton extends StatelessWidget {
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           backgroundColor: Style.white,
-          minimumSize: Size(96.r,36.r),
+          minimumSize: Size(96.r, 36.r),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.r),
           ),
