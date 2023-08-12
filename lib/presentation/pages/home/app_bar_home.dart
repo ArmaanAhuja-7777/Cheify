@@ -22,7 +22,7 @@ class AppBarHome extends StatelessWidget {
     return CommonAppBar(
         child: GestureDetector(
       onTap: () {
-        context.pushRoute( ViewMapRoute());
+        context.pushRoute(ViewMapRoute());
         event.setAddress();
       },
       child: Row(

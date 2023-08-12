@@ -150,6 +150,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               isDarkMode: isDarkMode,
                             );
                           },
+                          background: Color.fromARGB(100, 0, 0, 0),
+                          textColor: Style.white,
+                          // borderColor: Style.white,
                         ),
                         10.verticalSpace,
                         CustomButton(
@@ -165,7 +168,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           },
                           background: Color.fromARGB(100, 0, 0, 0),
                           textColor: Style.white,
-                          borderColor: Style.white,
+                          // borderColor: Style.white,
                         ),
                         22.verticalSpace,
                       ],

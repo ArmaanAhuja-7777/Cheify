@@ -23,13 +23,14 @@ class TrKeys {
   static const String branches = 'branches';
   static const String notWork = "not_work";
   static const String emailOrPhoneNumber = "email_or_phone_number";
-  static const String timeSchedule= "time_schedule";
+  static const String timeSchedule = "time_schedule";
   static const String moreInfo = 'more_info';
   static const String canNotBeEmpty = 'can_not_be_empty';
   static const String coped = 'copied';
   static const String referralFaq = 'referral_faq';
   static const String ratings = 'ratings';
-  static const String yourOrderStatusChanged = 'your_order_status_has_been_changed';
+  static const String yourOrderStatusChanged =
+      'your_order_status_has_been_changed';
   static const String openShop = 'open_shop';
   static const String deals = 'deals';
   static const String maxQty = 'max_qty';
@@ -134,7 +135,7 @@ class TrKeys {
   static const String cartIsEmpty = 'cart_is_empty';
   static const String allPreviouslyAdded = "all_previously_added";
   static const String agreeLocation = 'agree_location';
-  static const String nothingFound = 'nothing_found';
+  static const String nothingFound = 'Nothing found';
   static const String trySearchingAgain = "try_searching_again";
   static const String orderNow = 'order_now';
   static const String results = 'results';
@@ -162,7 +163,7 @@ class TrKeys {
   static const String fullName = 'full_name';
   static const String cardNumber = 'card_number';
   static const String addNewCart = 'add_new_card';
-  static const String likeRestaurants = 'liked_restaurant';
+  static const String likeRestaurants = 'Liked Meal Packs';
   static const String add = 'add';
   static const String groupMember = 'group_member';
   static const String manageOrder = 'manage_order';

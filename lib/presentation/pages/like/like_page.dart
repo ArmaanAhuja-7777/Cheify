@@ -66,7 +66,7 @@ class _LikePageState extends ConsumerState<LikePage> {
   Widget build(BuildContext context) {
     final state = ref.watch(likeProvider);
     return Scaffold(
-      backgroundColor: Style.bgGrey,
+      backgroundColor: const Color.fromARGB(100, 255, 170, 0),
       body: Column(
         children: [
           CommonAppBar(
@@ -74,7 +74,7 @@ class _LikePageState extends ConsumerState<LikePage> {
               AppHelpers.getTranslation(TrKeys.likeRestaurants),
               style: Style.interNoSemi(
                 size: 18,
-                color: Style.black,
+                color: const Color.fromARGB(255, 255, 170, 0),
               ),
             ),
           ),

@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 class Style {
   Style._();
   static const Color bottomNavigationBarColor =
-      Color.fromARGB(255, 247, 162, 4);
+      Color.fromARGB(255, 255, 170, 0);
   static const Color enterOrderButton = Color(0xFFF4F8F7);
   static const Color tabBarBorderColor = Color(0xFFDEDFE1);
   static const Color orderButtonColor = Color(0xFF323232);
@@ -19,7 +19,7 @@ class Style {
   static const Color dontHaveAccBtnBack = Color(0xFFF8F8F8);
   static const Color mainBack = Color.fromARGB(255, 255, 170, 0);
   static const Color borderColor = Color(0xFFE6E6E6);
-  static const Color brandGreen = Color.fromARGB(255, 234, 140, 0);
+  static const Color brandGreen = Color.fromARGB(255, 255, 170, 0);
   static const Color textGrey = Color(0xFF898989);
   static const Color recommendBg = Color(0xFFE8C7B0);
   static const Color bannerBg = Color(0xFFF3DED4);

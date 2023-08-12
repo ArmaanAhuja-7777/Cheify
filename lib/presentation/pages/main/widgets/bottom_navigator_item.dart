@@ -37,7 +37,8 @@ class BottomNavigatorItem extends StatelessWidget {
               Expanded(
                   child: index == currentIndex
                       ? Icon(selectIcon,
-                          size: isScrolling ? 0.r : 24.r, color: Style.white)
+                          size: isScrolling ? 0.r : 24.r,
+                          color: Color.fromARGB(255, 255, 255, 255))
                       : Icon(unSelectIcon,
                           size: isScrolling ? 0.r : 24.r, color: Style.white)),
               AnimatedContainer(
@@ -45,7 +46,7 @@ class BottomNavigatorItem extends StatelessWidget {
                 width: isScrolling ? 0.w : 24.w,
                 decoration: BoxDecoration(
                     color: index == currentIndex
-                        ? Style.brandGreen
+                        ? const Color.fromARGB(255, 255, 255, 255)
                         : Style.transparent,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(100.r),

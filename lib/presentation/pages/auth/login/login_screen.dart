@@ -137,6 +137,7 @@ class LoginScreen extends ConsumerWidget {
                         title: 'Login',
                         onPressed: () {
                           event.login(context);
+
                           // context.replaceRoute(const MainRoute());
                         },
                       ),

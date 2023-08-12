@@ -74,7 +74,7 @@ class _HomePageState extends ConsumerState<HomePage> {
         ..fetchCategories(context);
       ref.read(viewMapProvider.notifier).checkAddress();
       ref.read(currencyProvider.notifier).fetchCurrency(context);
-      if(LocalStorage.instance.getToken().isNotEmpty){
+      if (LocalStorage.instance.getToken().isNotEmpty) {
         ref.read(shopOrderProvider.notifier).getCart(context, () {});
       }
     });
@@ -149,14 +149,16 @@ class _HomePageState extends ConsumerState<HomePage> {
       child: Directionality(
         textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
         child: Scaffold(
-          backgroundColor: isDarkMode ? Style.mainBackDark : Style.bgGrey,
+          backgroundColor: isDarkMode
+              ? Style.mainBackDark
+              : const Color.fromARGB(100, 255, 170, 0),
           body: SmartRefresher(
             enablePullDown: true,
             enablePullUp: true,
             physics: const BouncingScrollPhysics(),
             controller: _restaurantController,
             scrollController: _controller,
-            header:  WaterDropMaterialHeader(
+            header: WaterDropMaterialHeader(
               distance: 160.h,
               backgroundColor: Style.white,
               color: Style.textGrey,
@@ -165,7 +167,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             onRefresh: () => _onRefresh(state),
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.only( bottom: 56.h),
+                padding: EdgeInsets.only(bottom: 56.h),
                 child: Column(
                   children: [
                     AppBarHome(state: state, event: event),
@@ -238,41 +240,41 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
         state.story?.isNotEmpty ?? false
             ? SizedBox(
-          height: 200.r,
-          child: SmartRefresher(
-            controller: _storyController,
-            scrollDirection: Axis.horizontal,
-            enablePullDown: false,
-            enablePullUp: true,
-            primary: false,
-            onLoading: () async {
-              await event.fetchStorePage(context, _storyController);
-            },
-            child: AnimationLimiter(
-              child: ListView.builder(
-                shrinkWrap: true,
-                primary: false,
-                scrollDirection: Axis.horizontal,
-                itemCount: state.story?.length ?? 0,
-                padding: EdgeInsets.only(left: 16.w),
-                itemBuilder: (context, index) =>
-                    AnimationConfiguration.staggeredList(
-                        position: index,
-                        duration: const Duration(milliseconds: 375),
-                        child: SlideAnimation(
-                          verticalOffset: 50.0,
-                          child: FadeInAnimation(
-                            child: ShopBarItem(
-                              index: index,
-                              controller: _storyController,
-                              story: state.story?[index]?.first,
-                            ),
-                          ),
-                        )),
-              ),
-            ),
-          ),
-        )
+                height: 200.r,
+                child: SmartRefresher(
+                  controller: _storyController,
+                  scrollDirection: Axis.horizontal,
+                  enablePullDown: false,
+                  enablePullUp: true,
+                  primary: false,
+                  onLoading: () async {
+                    await event.fetchStorePage(context, _storyController);
+                  },
+                  child: AnimationLimiter(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      primary: false,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.story?.length ?? 0,
+                      padding: EdgeInsets.only(left: 16.w),
+                      itemBuilder: (context, index) =>
+                          AnimationConfiguration.staggeredList(
+                              position: index,
+                              duration: const Duration(milliseconds: 375),
+                              child: SlideAnimation(
+                                verticalOffset: 50.0,
+                                child: FadeInAnimation(
+                                  child: ShopBarItem(
+                                    index: index,
+                                    controller: _storyController,
+                                    story: state.story?[index]?.first,
+                                  ),
+                                ),
+                              )),
+                    ),
+                  ),
+                ),
+              )
             : const SizedBox.shrink(),
         24.verticalSpace,
         state.isShopRecommendLoading
@@ -322,20 +324,20 @@ class _HomePageState extends ConsumerState<HomePage> {
                 title: AppHelpers.getTranslation(TrKeys.shops),
               )
             : state.shops.isNotEmpty
-            ? Column(
-                children: [
-                  TitleAndIcon(
-                    rightTitle: AppHelpers.getTranslation(TrKeys.seeAll),
-                    isIcon: true,
-                    title: AppHelpers.getTranslation(TrKeys.shops),
-                    onRightTap: () {
-                      context.pushRoute(RecommendedRoute(isShop: true));
-                    },
-                  ),
-                  12.verticalSpace,
-                  SizedBox(
-                    height: 140.r,
-                    child: AnimationLimiter(
+                ? Column(
+                    children: [
+                      TitleAndIcon(
+                        rightTitle: AppHelpers.getTranslation(TrKeys.seeAll),
+                        isIcon: true,
+                        title: AppHelpers.getTranslation(TrKeys.shops),
+                        onRightTap: () {
+                          context.pushRoute(RecommendedRoute(isShop: true));
+                        },
+                      ),
+                      12.verticalSpace,
+                      SizedBox(
+                          height: 140.r,
+                          child: AnimationLimiter(
                             child: ListView.builder(
                               padding: EdgeInsets.only(left: 16.r),
                               primary: false,
@@ -356,30 +358,31 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 ),
                               ),
                             ),
-                          )
-                  ),
-                  30.verticalSpace,
-                ],
-              ) : const SizedBox.shrink(),
+                          )),
+                      30.verticalSpace,
+                    ],
+                  )
+                : const SizedBox.shrink(),
         state.isRestaurantNewLoading
             ? NewsShopShimmer(
                 title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
               )
-            : state.newRestaurant.isNotEmpty ?
-        Column(
-                children: [
-                  TitleAndIcon(
-                    rightTitle: AppHelpers.getTranslation(TrKeys.seeAll),
-                    isIcon: true,
-                    title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
-                    onRightTap: () {
-                      context.pushRoute(RecommendedRoute(isNewsOfPage: true));
-                    },
-                  ),
-                  12.verticalSpace,
-                  SizedBox(
-                    height: 250.h,
-                    child:  AnimationLimiter(
+            : state.newRestaurant.isNotEmpty
+                ? Column(
+                    children: [
+                      TitleAndIcon(
+                        rightTitle: AppHelpers.getTranslation(TrKeys.seeAll),
+                        isIcon: true,
+                        title: AppHelpers.getTranslation(TrKeys.newsOfWeek),
+                        onRightTap: () {
+                          context
+                              .pushRoute(RecommendedRoute(isNewsOfPage: true));
+                        },
+                      ),
+                      12.verticalSpace,
+                      SizedBox(
+                          height: 250.h,
+                          child: AnimationLimiter(
                             child: ListView.builder(
                               padding: EdgeInsets.only(left: 16.r),
                               primary: false,
@@ -399,10 +402,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 ),
                               ),
                             ),
-                          )
-                  ),
-                ],
-              ) : const SizedBox.shrink(),
+                          )),
+                    ],
+                  )
+                : const SizedBox.shrink(),
         30.verticalSpace,
         state.isRestaurantLoading
             ? const AllShopShimmer()

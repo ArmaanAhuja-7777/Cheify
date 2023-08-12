@@ -61,42 +61,47 @@ class CategoryScreen extends StatelessWidget {
                         child: FadeInAnimation(
                           child: (index == 0
                               ? GestureDetector(
-                            onTap: () {
-                              AppHelpers.showCustomModalBottomSheet(
-                                paddingTop:
-                                MediaQuery.of(context).padding.top + 100.h,
-                                context: context,
-                                modal: const FilterPage(),
-                                isDarkMode: false,
-                                isDrag: false,
-                                radius: 12,
-                              );
-                            },
-                            child: Container(
-                              margin: EdgeInsets.only(right: 4.r, left: 16.r),
-                              width: 38.w,
-                              padding: EdgeInsets.all(10.r),
-                              decoration: BoxDecoration(
-                                color: Style.black,
-                                borderRadius:
-                                BorderRadius.all(Radius.circular(10.r)),
-                              ),
-                              child: SvgPicture.asset(
-                                "assets/svgs/menu.svg",
-                              ),
-                            ),
-                          )
+                                  onTap: () {
+                                    AppHelpers.showCustomModalBottomSheet(
+                                      paddingTop:
+                                          MediaQuery.of(context).padding.top +
+                                              100.h,
+                                      context: context,
+                                      modal: const FilterPage(),
+                                      isDarkMode: false,
+                                      isDrag: false,
+                                      radius: 12,
+                                    );
+                                  },
+                                  child: Container(
+                                    margin:
+                                        EdgeInsets.only(right: 4.r, left: 16.r),
+                                    width: 38.w,
+                                    padding: EdgeInsets.all(10.r),
+                                    decoration: BoxDecoration(
+                                      color: const Color.fromARGB(
+                                          255, 255, 170, 0),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10.r)),
+                                    ),
+                                    child: SvgPicture.asset(
+                                      "assets/svgs/menu.svg",
+                                    ),
+                                  ),
+                                )
                               : CategoryBarItem(
-                            index: index,
-                            image: state.categories[index - 1].img ?? "",
-                            title: state.categories[index - 1].keywords ?? "",
-                            isActive: state.selectIndexCategory == index - 1,
-                            onTap: () {
-                              event.setSelectCategory(index - 1, context);
-                              restaurantController.resetNoData();
-                              shopController.resetNoData();
-                            },
-                          )),
+                                  index: index,
+                                  image: state.categories[index - 1].img ?? "",
+                                  title: state.categories[index - 1].keywords ??
+                                      "",
+                                  isActive:
+                                      state.selectIndexCategory == index - 1,
+                                  onTap: () {
+                                    event.setSelectCategory(index - 1, context);
+                                    restaurantController.resetNoData();
+                                    shopController.resetNoData();
+                                  },
+                                )),
                         ),
                       ),
                     );

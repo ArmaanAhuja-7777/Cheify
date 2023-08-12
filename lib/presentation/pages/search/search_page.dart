@@ -85,7 +85,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     return KeyboardDismisser(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: Style.bgGrey,
+        backgroundColor: const Color.fromARGB(100, 255, 170, 0),
         body: Column(
           children: [
             CommonAppBar(
@@ -360,7 +360,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                 : const SizedBox.shrink(),
         TitleAndIcon(
           title: AppHelpers.getTranslation(TrKeys.recently),
-          rightTitle:  AppHelpers.getTranslation(TrKeys.clear),
+          rightTitle: AppHelpers.getTranslation(TrKeys.clear),
           rightTitleColor: Style.red,
           onRightTap: () {
             event.clearAllHistory();

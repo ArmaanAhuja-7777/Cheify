@@ -9,9 +9,10 @@ class BannerShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       height: 200.h,
       margin: EdgeInsets.only(bottom: 30.h),
+      // color: Colors.yellow,
       child: AnimationLimiter(
         child: ListView.builder(
           shrinkWrap: true,
