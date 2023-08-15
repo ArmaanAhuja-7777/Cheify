@@ -54,7 +54,7 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
     return Directionality(
       textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: Style.bgGrey,
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
         body: ListView(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
@@ -71,12 +71,13 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
                 isLoading: ref.watch(shopProvider).isMapLoading),
             16.verticalSpace,
             Padding(
-              padding: EdgeInsetsDirectional.only(start: 16.w),
-              child: Text(
-                "${widget.shop.translation?.title ?? ""}(${widget.shop.translation?.address ?? ""})",
-                style: Style.interBold(),
-              ),
-            ),
+                padding: EdgeInsetsDirectional.only(start: 16.w),
+                child: Text(
+                  "${widget.shop.translation?.title ?? ""}(${widget.shop.translation?.address ?? ""})",
+                  style: Style.interBold(),
+                  // style: Style.interNormal(
+                  //     color: const Color.fromARGB(255, 255, 170, 0))),
+                )),
             16.verticalSpace,
             Padding(
               padding: EdgeInsetsDirectional.only(start: 16.w),
@@ -99,8 +100,7 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
                     ),
                     Text(
                       LocalStorage.instance.getSelectedCurrency().symbol ?? "",
-                      style:
-                          Style.interRegular(color: Style.textGrey, size: 14),
+                      style: Style.interRegular(color: Style.black, size: 14),
                     )
                   ],
                 ),
@@ -109,7 +109,7 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.h),
               child: Divider(
-                color: Style.hintColor,
+                color: Style.brandGreen,
                 thickness: 1.5.w,
               ),
             ),
@@ -138,7 +138,9 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 8.h),
               child: const Divider(
-                color: Style.hintColor,
+                color: Style.brandGreen,
+                // thickness: 1.5,
+                // thickness: 1.5.w,
               ),
             ),
             Consumer(builder: (context, ref, child) {
@@ -198,7 +200,7 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.h),
               child: Divider(
-                color: Style.hintColor,
+                color: Style.brandGreen,
                 thickness: 1.5.w,
               ),
             ),

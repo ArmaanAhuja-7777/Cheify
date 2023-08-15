@@ -269,29 +269,33 @@ class _GroupOrderPageState extends ConsumerState<GroupOrderScreen> {
                                     Navigator.pop(context);
                                   },
                                   onTap: () {
-                                    for (UserCart cart in state.cart!.userCarts!) {
-                                      if (cart.cartDetails?.isNotEmpty ?? false) {
+                                    for (UserCart cart
+                                        in state.cart!.userCarts!) {
+                                      if (cart.cartDetails?.isNotEmpty ??
+                                          false) {
                                         checkProduct = true;
                                         break;
                                       }
                                     }
-                                   if(!checkProduct){
-                                     Navigator.pop(context);
-                                     AppHelpers.showCheckTopSnackBarInfo(
-                                       context,
-                                       AppHelpers.getTranslation(TrKeys.needSelectProduct),
-                                     );
-                                   }else{
-                                     Navigator.pop(context);
-                                     context.pushRoute(const OrderScreen());
-                                   }
+                                    if (!checkProduct) {
+                                      Navigator.pop(context);
+                                      AppHelpers.showCheckTopSnackBarInfo(
+                                        context,
+                                        AppHelpers.getTranslation(
+                                            TrKeys.needSelectProduct),
+                                      );
+                                    } else {
+                                      Navigator.pop(context);
+                                      context.pushRoute(const OrderScreen());
+                                    }
                                   },
                                 ),
                               );
                             } else if (!checkProduct) {
                               AppHelpers.showCheckTopSnackBarInfo(
                                 context,
-                                AppHelpers.getTranslation(TrKeys.needSelectProduct),
+                                AppHelpers.getTranslation(
+                                    TrKeys.needSelectProduct),
                               );
                             } else {
                               Navigator.pop(context);

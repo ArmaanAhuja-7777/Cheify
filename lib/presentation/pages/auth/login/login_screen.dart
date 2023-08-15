@@ -29,7 +29,7 @@ class LoginScreen extends ConsumerWidget {
       textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
       child: KeyboardDismisser(
         child: Container(
-          margin: MediaQuery.of(context).viewInsets,
+          // margin: MediaQuery.of(context).viewInsets,
           decoration: BoxDecoration(
               color: Style.bgGrey.withOpacity(0.96),
               borderRadius: BorderRadius.only(

@@ -178,8 +178,7 @@ class ShopPageAvatar extends StatelessWidget {
                   : const SizedBox.shrink(),
               bonus != null ? _bonusButton(context) : const SizedBox.shrink(),
               12.verticalSpace,
-              if(AppHelpers.getGroupOrder())
-              groupOrderButton(context),
+              if (AppHelpers.getGroupOrder()) groupOrderButton(context),
             ],
           ),
         )
@@ -320,7 +319,7 @@ class ShopPageAvatar extends StatelessWidget {
             shopImage: shop.logoImg ?? "",
             size: 70,
             padding: 6,
-            bgColor: Style.white.withOpacity(0.65),
+            bgColor: Style.bgGrey.withOpacity(0.45),
           ),
         ),
         Positioned(
@@ -341,7 +340,7 @@ class ShopPageAvatar extends StatelessWidget {
                     child: Container(
                       width: 40.w,
                       height: 40.w,
-                      color: Style.unselectedBottomBarItem.withOpacity(0.29),
+                      color: Style.unselectedBottomBarItem.withOpacity(1),
                       child: const Center(
                         child: Icon(
                           FlutterRemix.chat_1_line,
@@ -362,7 +361,7 @@ class ShopPageAvatar extends StatelessWidget {
                     child: Container(
                       width: 40.w,
                       height: 40.w,
-                      color: Style.unselectedBottomBarItem.withOpacity(0.29),
+                      color: Style.unselectedBottomBarItem.withOpacity(1),
                       child: Center(
                         child: Icon(
                           isLike
@@ -385,7 +384,7 @@ class ShopPageAvatar extends StatelessWidget {
                     child: Container(
                       width: 40.w,
                       height: 40.w,
-                      color: Style.unselectedBottomBarItem.withOpacity(0.29),
+                      color: Style.unselectedBottomBarItem.withOpacity(1),
                       child: const Center(
                         child: Icon(
                           FlutterRemix.share_line,

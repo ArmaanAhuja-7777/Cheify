@@ -6,9 +6,8 @@ import 'package:osm_nominatim/osm_nominatim.dart';
 import '../../components/text_fields/search_text_field.dart';
 import '../../theme/app_style.dart';
 
-
 class MapSearchPage extends StatefulWidget {
-  const MapSearchPage({ Key? key}) : super(key: key);
+  const MapSearchPage({Key? key}) : super(key: key);
 
   @override
   State<MapSearchPage> createState() => _MapSearchPageState();
@@ -16,7 +15,6 @@ class MapSearchPage extends StatefulWidget {
 
 class _MapSearchPageState extends State<MapSearchPage> {
   List<Place> searchResult = [];
-
 
   @override
   Widget build(BuildContext context) {
@@ -46,22 +44,31 @@ class _MapSearchPageState extends State<MapSearchPage> {
                     itemCount: searchResult.length,
                     padding: EdgeInsets.only(bottom: 22.h),
                     itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: (){
-                      context.popRoute(searchResult[index]);
-                    },
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        22.verticalSpace,
-                        Text(searchResult[index].address?["country"] ?? "",style: Style.interNormal(size: 14),),
-                        Text(searchResult[index].displayName ,style: Style.interNormal(size: 14),
-                        maxLines: 2,overflow: TextOverflow.ellipsis,),
-                        const Divider(color: Style.borderColor,),
-                      ],
-                    ),
-                  );
-                }),
+                      return InkWell(
+                        onTap: () {
+                          context.popRoute(searchResult[index]);
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            22.verticalSpace,
+                            Text(
+                              searchResult[index].address?["country"] ?? "",
+                              style: Style.interNormal(size: 14),
+                            ),
+                            Text(
+                              searchResult[index].displayName,
+                              style: Style.interNormal(size: 14),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const Divider(
+                              color: Style.borderColor,
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
               )
             ],
           ),

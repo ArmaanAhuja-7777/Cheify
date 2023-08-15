@@ -140,7 +140,7 @@ class TrKeys {
   static const String orderNow = 'order_now';
   static const String results = 'results';
   static const String found = 'found';
-  static const String restaurants = 'restaurants';
+  static const String restaurants = 'Meal Packs';
   static const String noRestaurant = 'no_restaurant';
   static const String ratingCourier = 'rating_courier';
   static const String sendMessage = 'send_message';
@@ -178,7 +178,7 @@ class TrKeys {
   static const String alternativeNumber = 'alternative_number';
   static const String help = 'help';
   static const String setting = 'settings';
-  static const String allRestaurants = 'all_restaurants';
+  static const String allRestaurants = 'All Meal Packs';
   static const String newsOfWeek = 'news_of_the_week';
   static const String popular = 'popular';
   static const String recommended = 'recommended';
@@ -221,7 +221,7 @@ class TrKeys {
   static const String confirmLocation = 'confirm_location';
   static const String title = 'title';
   static const String save = 'save';
-  static const String searchProducts = 'search_restaurant_and_products';
+  static const String searchProducts = 'Search your location';
   static const String all = 'all';
   static const String openNow = 'open_now';
   static const String newKey = 'new';

@@ -64,7 +64,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                   ? FlutterRemix.arrow_left_s_line
                   : FlutterRemix.arrow_right_s_line,
               size: 24.r,
-              color: Style.black,
+              color: Style.brandGreen,
             ),
           ),
           title: Text(
@@ -157,7 +157,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                           margin: REdgeInsets.all(24),
                           padding: REdgeInsets.symmetric(horizontal: 16),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Style.black),
+                            border: Border.all(color: Style.brandGreen),
                             borderRadius: BorderRadius.circular(16.r),
                             color: Style.white,
                           ),
@@ -189,7 +189,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                                   width: 37,
                                   height: 37,
                                   decoration: BoxDecoration(
-                                    color: Style.black,
+                                    color: Style.brandGreen,
                                     borderRadius: BorderRadius.circular(37),
                                   ),
                                   child: Icon(

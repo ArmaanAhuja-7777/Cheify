@@ -56,7 +56,7 @@ class Style {
   static const Color extrasInCart = Color(0xFF9EA3A8);
   static const Color notDoneOrderStatus = Color(0xFFF5F6F6);
   static const Color unselectedBottomBarBack = Color(0xFFEFEFEF);
-  static const Color unselectedBottomBarItem = Color(0xFFB9B9B9);
+  static const Color unselectedBottomBarItem = Color.fromARGB(255, 255, 170, 0);
   static const Color bottomNavigationShadow =
       Color.fromRGBO(207, 207, 207, 0.65);
   static const Color profileModalBack = Color(0xFFF5F5F5);

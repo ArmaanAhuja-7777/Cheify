@@ -19,7 +19,7 @@ class PopButton extends StatelessWidget {
       child: AnimationButtonEffect(
         child: Container(
           decoration: BoxDecoration(
-              color: Style.black,
+              color: Style.brandGreen,
               borderRadius: BorderRadius.all(Radius.circular(10.r))),
           padding: EdgeInsets.all(14.h),
           child: const Icon(

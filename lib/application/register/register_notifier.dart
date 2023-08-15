@@ -73,7 +73,7 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
     return AppValidators.isValidEmail(state.email);
   }
 
-  Future<void> sendCode(BuildContext context,VoidCallback onSuccess) async {
+  Future<void> sendCode(BuildContext context, VoidCallback onSuccess) async {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       if (!AppValidators.isValidEmail(state.email)) {
@@ -112,12 +112,13 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
     }
   }
 
-  Future<void> sendCodeToNumber(BuildContext context,ValueChanged<String> onSuccess) async {
+  Future<void> sendCodeToNumber(
+      BuildContext context, ValueChanged<String> onSuccess) async {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       state = state.copyWith(isLoading: true, isSuccess: false);
       await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: state.email,
+        phoneNumber: "+91${state.email}",
         verificationCompleted: (PhoneAuthCredential credential) {},
         verificationFailed: (FirebaseAuthException e) {
           AppHelpers.showCheckTopSnackBar(
@@ -126,12 +127,11 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
                 AppHelpers.getTranslation(e.message ?? "")),
           );
           state = state.copyWith(isLoading: false, isSuccess: false);
-
         },
         codeSent: (String verificationId, int? resendToken) {
           state = state.copyWith(
             verificationId: verificationId,
-            phone: state.email,
+            phone: "+91${state.email}",
             isLoading: false,
             isSuccess: true,
           );

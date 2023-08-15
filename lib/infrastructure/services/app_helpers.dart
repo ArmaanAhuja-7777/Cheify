@@ -6,6 +6,7 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../../presentation/theme/app_style.dart';
 import '../../../infrastructure/services/local_storage.dart';
 import 'app_constants.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class AppHelpers {
   AppHelpers._();
@@ -292,11 +293,20 @@ class AppHelpers {
       ),
       isScrollControlled: true,
       constraints: BoxConstraints(
-        maxHeight: MediaQuery.of(context).size.height - paddingTop.r,
-      ),
+          maxHeight: MediaQuery.of(context).size.height - paddingTop.r),
       backgroundColor: Style.transparent,
       context: context,
-      builder: (context) => modal,
+      builder: (context) => KeyboardVisibilityBuilder(
+        builder: (context, isKeyboardVisible) {
+          // print(isKeyboardVisible);
+          return Padding(
+              padding: EdgeInsets.only(
+                  bottom: isKeyboardVisible
+                      ? MediaQuery.of(context).size.height / 2.5
+                      : 0),
+              child: SingleChildScrollView(child: modal));
+        },
+      ),
     );
   }
 

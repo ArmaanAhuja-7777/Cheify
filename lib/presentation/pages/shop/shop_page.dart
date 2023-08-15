@@ -212,7 +212,7 @@ class _ShopPageState extends ConsumerState<ShopPage>
         },
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          backgroundColor: Style.bgGrey,
+          // backgroundColor: Color.fromARGB(255, 255, 224, 167),
           body: state.isLoading
               ? const Loading()
               : NestedScrollView(

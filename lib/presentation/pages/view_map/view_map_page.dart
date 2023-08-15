@@ -264,7 +264,7 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                               MediaQuery.of(context).size.height / 2,
                           left: MediaQuery.of(context).size.width / 2 - 23.w,
                           child: Image.asset(
-                            "assets/images/marker.png",
+                            "assets/images/marker2.png",
                             width: 46.w,
                             height: 46.h,
                           ),
@@ -369,9 +369,11 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                                     : Style.black,
                                 title: !widget.isShopLocation
                                     ? (state.isActive
-                                    ? AppHelpers.getTranslation(TrKeys.apply)
-                                    : AppHelpers.getTranslation(TrKeys.noDriverZone))
-                                    : AppHelpers.getTranslation(TrKeys.apply) ,
+                                        ? AppHelpers.getTranslation(
+                                            TrKeys.apply)
+                                        : AppHelpers.getTranslation(
+                                            TrKeys.noDriverZone))
+                                    : AppHelpers.getTranslation(TrKeys.apply),
                                 onPressed: () {
                                   if (widget.isShopLocation) {
                                     Navigator.pop(context, state.place);
