@@ -32,7 +32,7 @@ import '../pages/main/main_page.dart' as _i7;
 import '../pages/order/order_screen/order_progress_screen.dart' as _i17;
 import '../pages/order/order_screen/order_screen.dart' as _i11;
 import '../pages/order/orders_page.dart' as _i9;
-import '../pages/profile/become_seller/create_shop.dart' as _i20;
+// import '../pages/profile/become_seller/create_shop.dart' as _i20;
 import '../pages/profile/help_page.dart' as _i16;
 import '../pages/profile/notification_page.dart' as _i27;
 import '../pages/profile/share_referral_faq.dart' as _i24;
@@ -205,12 +205,12 @@ class AppRouter extends _i28.RootStackRouter {
         child: const _i19.WalletHistory(),
       );
     },
-    CreateShop.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const _i20.CreateShop(),
-      );
-    },
+    // CreateShop.name: (routeData) {
+    //   return _i28.MaterialPageX<dynamic>(
+    //     routeData: routeData,
+    //     child: const _i20.CreateShop(),
+    //   );
+    // },
     ShopsBannerRoute.name: (routeData) {
       final args = routeData.argsAs<ShopsBannerRouteArgs>();
       return _i28.MaterialPageX<dynamic>(

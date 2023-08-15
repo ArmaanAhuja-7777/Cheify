@@ -264,7 +264,7 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                               MediaQuery.of(context).size.height / 2,
                           left: MediaQuery.of(context).size.width / 2 - 23.w,
                           child: Image.asset(
-                            "assets/images/marker2.png",
+                            "assets/images/marker3.png",
                             width: 46.w,
                             height: 46.h,
                           ),

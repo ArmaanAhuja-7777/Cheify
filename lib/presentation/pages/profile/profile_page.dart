@@ -22,7 +22,7 @@ import 'package:riverpodtemp/presentation/components/app_bars/common_app_bar.dar
 import 'package:riverpodtemp/presentation/components/custom_network_image.dart';
 import 'package:riverpodtemp/presentation/components/loading.dart';
 import 'package:riverpodtemp/application/like/like_provider.dart';
-import 'package:riverpodtemp/presentation/pages/profile/currency_page.dart';
+// import 'package:riverpodtemp/presentation/pages/profile/currency_page.dart';
 import 'package:riverpodtemp/presentation/pages/profile/delete_screen.dart';
 import 'package:riverpodtemp/presentation/routes/app_router.gr.dart';
 import 'package:riverpodtemp/presentation/theme/theme.dart';
@@ -32,6 +32,8 @@ import 'edit_profile_page.dart';
 import '../../../../application/edit_profile/edit_profile_provider.dart';
 import 'language_page.dart';
 import 'widgets/profile_item.dart';
+
+// lib/presentation/pages/profile/become_seller/create_shop.dart
 
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -131,7 +133,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                 ),
                               ),
                               SizedBox(
-                                width: MediaQuery.of(context).size.width-150.w,
+                                width:
+                                    MediaQuery.of(context).size.width - 150.w,
                                 child: Text(
                                   state.userData?.email ?? " ",
                                   style: Style.interRegular(
@@ -214,7 +217,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                               icon: FlutterRemix.notification_2_line,
                               isCount: true,
                               count: (stateNotification
-                                  .countOfNotifications?.notification ?? 0).toString(),
+                                          .countOfNotifications?.notification ??
+                                      0)
+                                  .toString(),
                               onTap: () {
                                 context
                                     .pushRoute(const NotificationListRoute());
@@ -223,19 +228,11 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                             ProfileItem(
                               isLtr: isLtr,
                               title: AppHelpers.getTranslation(
-                                  TrKeys.becomeSeller),
-                              icon: FlutterRemix.user_star_line,
-                              onTap: () {
-                                context.pushRoute(const CreateShop());
-                              },
-                            ),
-                            ProfileItem(
-                              isLtr: isLtr,
-                              title: AppHelpers.getTranslation(
                                   TrKeys.chatWithAdmin),
                               icon: FlutterRemix.chat_1_line,
                               onTap: () {
-                                context.pushRoute( ChatRoute(roleId: "admin", name: "Admin"));
+                                context.pushRoute(
+                                    ChatRoute(roleId: "admin", name: "Admin"));
                               },
                             ),
                             ProfileItem(
@@ -271,19 +268,19 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                 );
                               },
                             ),
-                            ProfileItem(
-                              isLtr: isLtr,
-                              title:
-                                  AppHelpers.getTranslation(TrKeys.currencies),
-                              icon: FlutterRemix.bank_card_line,
-                              onTap: () {
-                                AppHelpers.showCustomModalBottomSheet(
-                                  context: context,
-                                  modal: const CurrencyScreen(),
-                                  isDarkMode: isDarkMode,
-                                );
-                              },
-                            ),
+                            // ProfileItem(
+                            //   isLtr: isLtr,
+                            //   title:
+                            //       AppHelpers.getTranslation(TrKeys.currencies),
+                            //   icon: FlutterRemix.bank_card_line,
+                            //   onTap: () {
+                            //     AppHelpers.showCustomModalBottomSheet(
+                            //       context: context,
+                            //       modal: const CurrencyScreen(),
+                            //       isDarkMode: isDarkMode,
+                            //     );
+                            //   },
+                            // ),
                             ProfileItem(
                               isLtr: isLtr,
                               title: AppHelpers.getTranslation(
@@ -315,20 +312,20 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                 );
                               },
                             ),
-                            ProfileItem(
-                              isLtr: isLtr,
-                              title: AppHelpers.getTranslation(TrKeys.careers),
-                              icon: FlutterRemix.empathize_line,
-                              onTap: () async {
-                                // ignore: deprecated_member_use
-                                await launch(
-                                  "${AppConstants.webUrl}/careers",
-                                  forceSafariVC: true,
-                                  forceWebView: true,
-                                  enableJavaScript: true,
-                                );
-                              },
-                            ),
+                            // ProfileItem(
+                            //   isLtr: isLtr,
+                            //   title: AppHelpers.getTranslation(TrKeys.careers),
+                            //   icon: FlutterRemix.empathize_line,
+                            //   onTap: () async {
+                            //     // ignore: deprecated_member_use
+                            //     await launch(
+                            //       "${AppConstants.webUrl}/careers",
+                            //       forceSafariVC: true,
+                            //       forceWebView: true,
+                            //       enableJavaScript: true,
+                            //     );
+                            // },
+                            // ),
                             ProfileItem(
                               isLtr: isLtr,
                               title: AppHelpers.getTranslation(TrKeys.blogs),

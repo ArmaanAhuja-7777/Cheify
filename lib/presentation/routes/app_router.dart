@@ -21,7 +21,7 @@ import '../pages/chat/chat/chat_page.dart';
 import '../pages/home/filter/result_filter.dart';
 import '../pages/home/widgets/shops_banner_page.dart';
 import '../pages/order/order_screen/order_progress_screen.dart';
-import '../pages/profile/become_seller/create_shop.dart';
+// import '../pages/profile/become_seller/create_shop.dart';
 import '../pages/profile/help_page.dart';
 import '../pages/home/widgets/recommended_screen.dart';
 import '../pages/profile/share_referral_faq.dart';
@@ -96,8 +96,8 @@ import '../pages/story_page/story_page.dart';
       page: HelpPage,
     ),
     MaterialRoute(
-        path: '/order_progress',
-        page: OrderProgressPage,
+      path: '/order_progress',
+      page: OrderProgressPage,
     ),
     MaterialRoute(
       path: '/result_filter',
@@ -107,10 +107,10 @@ import '../pages/story_page/story_page.dart';
       path: '/wallet_history',
       page: WalletHistory,
     ),
-    MaterialRoute(
-      path: '/create_shop',
-      page: CreateShop,
-    ),
+    // MaterialRoute(
+    //   path: '/create_shop',
+    //   page: CreateShop,
+    // ),
     MaterialRoute(
       path: '/shops_banner',
       page: ShopsBannerPage,
