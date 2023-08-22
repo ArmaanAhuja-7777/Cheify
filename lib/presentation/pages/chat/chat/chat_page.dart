@@ -2,6 +2,7 @@
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_remix/flutter_remix.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -146,64 +147,69 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                         );
                       },
                     ),
-                    Positioned(
-                      left: 0,
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        color: Style.bgGrey,
-                        child: Container(
-                          height: 72.r,
-                          margin: REdgeInsets.all(24),
-                          padding: REdgeInsets.symmetric(horizontal: 16),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Style.brandGreen),
-                            borderRadius: BorderRadius.circular(16.r),
-                            color: Style.white,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Expanded(
-                                child: TextField(
-                                  controller: state.textController,
-                                  cursorWidth: 1.r,
-                                  cursorColor: Style.black,
-                                  decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintStyle: GoogleFonts.k2d(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 12.sp,
-                                      letterSpacing: -0.5,
-                                      color: Style.black,
-                                    ),
-                                    hintText: AppHelpers.getTranslation(
-                                      TrKeys.typeSomething,
-                                    ),
-                                  ),
-                                ),
+                    KeyboardVisibilityBuilder(
+                        builder: (context, isKeyboardVisible) {
+                      return Positioned(
+                          child: Container(
+                            color: Style.bgGrey,
+                            child: Container(
+                              height: 72.r,
+                              margin: REdgeInsets.all(24),
+                              padding: REdgeInsets.symmetric(horizontal: 16),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Style.brandGreen),
+                                borderRadius: BorderRadius.circular(16.r),
+                                color: Style.white,
                               ),
-                              InkWell(
-                                onTap: notifier.sendMessage,
-                                child: Container(
-                                  width: 37,
-                                  height: 37,
-                                  decoration: BoxDecoration(
-                                    color: Style.brandGreen,
-                                    borderRadius: BorderRadius.circular(37),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Expanded(
+                                    child: TextField(
+                                      controller: state.textController,
+                                      cursorWidth: 1.r,
+                                      cursorColor: Style.black,
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintStyle: GoogleFonts.k2d(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 12.sp,
+                                          letterSpacing: -0.5,
+                                          color: Style.black,
+                                        ),
+                                        hintText: AppHelpers.getTranslation(
+                                          TrKeys.typeSomething,
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                  child: Icon(
-                                    FlutterRemix.send_plane_2_line,
-                                    size: 18.r,
-                                    color: Style.white,
-                                  ),
-                                ),
-                              )
-                            ],
+                                  InkWell(
+                                    onTap: notifier.sendMessage,
+                                    child: Container(
+                                      width: 37,
+                                      height: 37,
+                                      decoration: BoxDecoration(
+                                        color: Style.brandGreen,
+                                        borderRadius: BorderRadius.circular(37),
+                                      ),
+                                      child: Icon(
+                                        FlutterRemix.send_plane_2_line,
+                                        size: 18.r,
+                                        color: Style.white,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    )
+                          left: 0,
+                          right: 0,
+                          bottom: isKeyboardVisible
+                              ? MediaQuery.of(context).size.height / 2.5
+                              : 0);
+                    }),
                   ],
                 );
         }),

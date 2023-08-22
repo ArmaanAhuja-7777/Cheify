@@ -149,9 +149,8 @@ class _HomePageState extends ConsumerState<HomePage> {
       child: Directionality(
         textDirection: isLtr ? TextDirection.ltr : TextDirection.rtl,
         child: Scaffold(
-          backgroundColor: isDarkMode
-              ? Style.mainBackDark
-              : const Color.fromARGB(100, 255, 170, 0),
+          backgroundColor:
+              isDarkMode ? Style.mainBackDark : Style.whiteWithOpacity,
           body: SmartRefresher(
             enablePullDown: true,
             enablePullUp: true,

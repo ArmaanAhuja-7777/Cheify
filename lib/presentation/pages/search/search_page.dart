@@ -85,7 +85,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     return KeyboardDismisser(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: const Color.fromARGB(100, 255, 170, 0),
+        backgroundColor: Style.whiteWithOpacity,
         body: Column(
           children: [
             CommonAppBar(

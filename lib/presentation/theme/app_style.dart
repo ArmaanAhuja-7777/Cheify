@@ -79,6 +79,7 @@ class Style {
   static const Color borderDark = Color(0xFF494B4D);
   static const Color partnerChatBack = Color(0xFF1A222C);
   static const Color yourChatBack = Color(0xFF25303F);
+  static const Color commonAppBar = Color.fromARGB(255, 245, 245, 245);
 
   /// font style
 
