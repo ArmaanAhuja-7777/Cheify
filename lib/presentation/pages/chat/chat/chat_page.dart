@@ -129,22 +129,27 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                           },
                         ).toList();
                         messages.sort((a, b) => b.date.compareTo(a.date));
-                        return ListView.builder(
-                          itemCount: messages.length,
-                          reverse: true,
-                          controller: scrollController,
-                          padding: REdgeInsets.only(
-                            bottom: 87,
-                            top: 20,
-                            left: 15,
-                            right: 15,
-                          ),
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            final chatData = messages[index];
-                            return ChatItem(chatData: chatData);
-                          },
-                        );
+                        return KeyboardVisibilityBuilder(
+                            builder: (context, isKeyboardVisible) {
+                          return ListView.builder(
+                            itemCount: messages.length,
+                            reverse: true,
+                            controller: scrollController,
+                            padding: REdgeInsets.only(
+                              bottom: isKeyboardVisible
+                                  ? MediaQuery.of(context).size.height / 2
+                                  : 87,
+                              top: 20,
+                              left: 15,
+                              right: 15,
+                            ),
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              final chatData = messages[index];
+                              return ChatItem(chatData: chatData);
+                            },
+                          );
+                        });
                       },
                     ),
                     KeyboardVisibilityBuilder(

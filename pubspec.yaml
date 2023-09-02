@@ -75,6 +75,7 @@ dependencies:
   firebase_messaging: ^14.0.2
   firebase_core: ^2.1.0
   firebase_auth: ^4.0.2
+  upi_india: ^3.0.1
 
 
 dev_dependencies:

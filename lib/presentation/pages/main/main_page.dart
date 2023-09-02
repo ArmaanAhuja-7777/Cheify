@@ -262,36 +262,56 @@ class _MainPageState extends State<MainPage> {
                         selectIcon: FlutterRemix.heart_fill,
                         unSelectIcon: FlutterRemix.heart_line,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          if (event.checkGuest()) {
-                            event.selectIndex(0);
-                            event.changeScrolling(false);
-                            context.replaceRoute(const LoginRoute());
-                          } else {
-                            event.changeScrolling(false);
-                            event.selectIndex(3);
-                          }
-                        },
-                        child: Container(
-                          width: 40.r,
-                          height: 40.r,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: index == 3
-                                      ? Style.brandGreen
-                                      : Style.transparent,
-                                  width: 2.w),
-                              shape: BoxShape.circle),
-                          child: CustomNetworkImage(
-                            url: user?.img ??
-                                LocalStorage.instance.getProfileImage(),
-                            height: 40.r,
-                            width: 40..r,
-                            radius: 20.r,
-                          ),
-                        ),
-                      ),
+                      user?.img == null
+                          ? BottomNavigatorItem(
+                              isScrolling: index == 3
+                                  ? false
+                                  : ref.watch(mainProvider).isScrolling,
+                              selectItem: () {
+                                if (event.checkGuest()) {
+                                  event.selectIndex(3);
+                                  event.changeScrolling(false);
+                                  context.replaceRoute(const LoginRoute());
+                                } else {
+                                  event.changeScrolling(false);
+                                  event.selectIndex(3);
+                                }
+                              },
+                              currentIndex: index,
+                              index: 3,
+                              selectIcon: FlutterRemix.account_box_fill,
+                              unSelectIcon: FlutterRemix.account_box_line,
+                            )
+                          : GestureDetector(
+                              onTap: () {
+                                if (event.checkGuest()) {
+                                  event.selectIndex(3);
+                                  event.changeScrolling(false);
+                                  context.replaceRoute(const LoginRoute());
+                                } else {
+                                  event.changeScrolling(false);
+                                  event.selectIndex(3);
+                                }
+                              },
+                              child: Container(
+                                width: 40.r,
+                                height: 40.r,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: index == 3
+                                            ? Style.brandGreen
+                                            : Style.transparent,
+                                        width: 2.w),
+                                    shape: BoxShape.circle),
+                                child: CustomNetworkImage(
+                                  url: user?.img ??
+                                      LocalStorage.instance.getProfileImage(),
+                                  height: 40.r,
+                                  width: 40..r,
+                                  radius: 20.r,
+                                ),
+                              ),
+                            ),
                     ],
                   ),
                 ),

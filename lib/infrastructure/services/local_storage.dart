@@ -79,12 +79,14 @@ class LocalStorage {
 
   Future<void> setProfileImage(String? image) async {
     if (_preferences != null) {
-      await _preferences!.setString(AppConstants.keyUserImage, image ?? '');
+      await _preferences!.setString(
+          AppConstants.keyUserImage, image ?? '/assets/images/avatar.png');
     }
   }
 
   String getProfileImage() =>
-      _preferences?.getString(AppConstants.keyUserImage) ?? '';
+      _preferences?.getString(AppConstants.keyUserImage) ??
+      '/assets/images/avatar.png';
 
   void deleteProfileImage() => _preferences?.remove(AppConstants.keyUserImage);
 
