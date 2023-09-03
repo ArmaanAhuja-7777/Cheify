@@ -383,6 +383,9 @@ class OrderNotifier extends StateNotifier<OrderState> {
       var data = await startUpiPayment(context, totalPrice, paymentId);
       if(!data){
       state = state.copyWith(isButtonLoading: false);
+        ScaffoldMessenger.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text('UPI Payment Failed')));
       return;
       }        
       }
