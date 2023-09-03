@@ -122,7 +122,7 @@ class _OrderCheckState extends State<OrderCheck> {
                   ""),
           state.calculateData?.totalPrice ?? 0);
       Delayed(milliseconds: 700).run(() {
-        widget.controllerCenter?.play();
+        // widget.controllerCenter?.play();
         eventShopOrder.getCart(context, () {});
         eventOrderList.fetchActiveOrders(context);
       });
