@@ -46,12 +46,12 @@ class _UPIPageState extends State<UPIPage> {
   Future<UpiResponse> initiateTransaction(UpiApp app,{String txRef = "TestingUpiIndiaPlugin",double amt = 1}) async {
     return _upiIndia.startTransaction(
       app: app,
-      receiverUpiId: "goyal.dev@paytm",
-      receiverName: 'Dev Goyal',
+      receiverUpiId: "pay9417243077@paytm",
+      receiverName: 'Jeona Khan',
       transactionRefId: '25584584',
       transactionNote: 'Payment to cheify app.',
       currency: "INR",
-      merchantId: "",
+      // merchantId: "",
       // amount: double.parse(widget.paise.toStringAsFixed(2)),
       amount: 1.00,
     );
