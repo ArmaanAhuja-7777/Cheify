@@ -347,12 +347,46 @@ class OrderNotifier extends StateNotifier<OrderState> {
     }
   }
 
+  Future<bool> startUpiPayment(
+      BuildContext context, totalPrice, paymentId) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => UPIPage(
+                onSuccess: () {},
+                paise: totalPrice,
+                txRef: paymentId,
+              )),
+    );
+    
+    if (!mounted) return false;
+
+    // if (result == "failure") {
+    //   startUpiPayment(context, totalPrice, paymentId);
+    // }
+
+    if(result == "success"){
+       return true;
+    }else{
+      return false;
+    }
+  }
+
   Future createOrder(BuildContext context, OrderBodyData data, int paymentId,
       String tag, num totalPrice) async {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       state = state.copyWith(isButtonLoading: true);
       final num wallet = LocalStorage.instance.getWalletData()?.price ?? 0;
+
+      if (tag == "UPI") {
+      var data = await startUpiPayment(context, totalPrice, paymentId);
+      if(!data){
+      state = state.copyWith(isButtonLoading: false);
+      return;
+      }        
+      }
+
       if (tag == "wallet" && wallet < totalPrice) {
         // ignore: use_build_context_synchronously
         AppHelpers.showCheckTopSnackBarInfo(
@@ -374,6 +408,10 @@ class OrderNotifier extends StateNotifier<OrderState> {
               );
               break;
             case 'cash':
+              _paymentsRepository.createTransaction(
+                  orderId: data.id ?? 0, paymentId: paymentId);
+              break;
+            case 'wallet':
               _paymentsRepository.createTransaction(
                   orderId: data.id ?? 0, paymentId: paymentId);
               break;
@@ -407,16 +445,6 @@ class OrderNotifier extends StateNotifier<OrderState> {
                 "paystack",
                 data.id,
               );
-              break;
-            case 'UPI':
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => UPIPage(onSuccess: () {
-                            //success
-                            _paymentsRepository.createTransaction(
-                                orderId: data.id ?? 0, paymentId: paymentId);
-                          })));
               break;
             default:
               _paymentsRepository.createTransaction(
