@@ -51,6 +51,7 @@ class _UPIPageState extends State<UPIPage> {
       transactionRefId: '25584584',
       transactionNote: 'Payment to cheify app.',
       currency: "INR",
+      merchantId: "",
       // amount: double.parse(widget.paise.toStringAsFixed(2)),
       amount: 1.00,
     );
