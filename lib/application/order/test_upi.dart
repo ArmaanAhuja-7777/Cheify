@@ -48,9 +48,9 @@ class _UPIPageState extends State<UPIPage> {
       app: app,
       receiverUpiId: "goyal.dev@paytm",
       receiverName: 'Dev Goyal',
-      transactionRefId: widget.txRef,
+      transactionRefId: widget.txRef.toString(),
       transactionNote: 'Payment to cheify app.',
-      amount: widget.paise,
+      amount: double.parse(widget.paise.toStringAsFixed(2)),
     );
   }
 
