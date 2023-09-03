@@ -41,7 +41,7 @@ class AppConstants {
   /// api urls
   static const String drawingBaseUrl = 'https://api.openrouteservice.org';
   static const String baseUrl = 'https://cheify.goyalinfocom.com';
-  static const String googleApiKey = 'AIzaSyBgNvtPqsuKcgp26ukVPobjKw0Igx2dp5M';
+  static const String googleApiKey = "AIzaSyBgNvtPqsuKcgp26ukVPobjKw0Igx2dp5M" ;
   static const String privacyPolicyUrl = '$baseUrl/privacy-policy';
   static const String adminPageUrl = 'https://admincheify.goyalinfocom.com';
   static const String webUrl = 'https://foodyman.org';

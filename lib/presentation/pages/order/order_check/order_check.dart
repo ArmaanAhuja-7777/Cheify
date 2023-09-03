@@ -124,7 +124,7 @@ class _OrderCheckState extends State<OrderCheck> {
       Delayed(milliseconds: 700).run(() {
         widget.controllerCenter?.play();
         eventShopOrder.getCart(context, () {});
-        eventOrderList.fetchActiveOrders(context);
+        // eventOrderList.fetchActiveOrders(context);
       });
     }
   }

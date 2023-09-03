@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:riverpodtemp/application/order/test_upi.dart';
 import 'package:riverpodtemp/domain/iterface/cart.dart';
 import 'package:riverpodtemp/domain/iterface/draw.dart';
 import 'package:riverpodtemp/infrastructure/models/data/addons_data.dart';
@@ -406,6 +407,16 @@ class OrderNotifier extends StateNotifier<OrderState> {
                 "paystack",
                 data.id,
               );
+              break;
+            case 'UPI':
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => UPIPage(onSuccess: () {
+                            //success
+                            _paymentsRepository.createTransaction(
+                                orderId: data.id ?? 0, paymentId: paymentId);
+                          })));
               break;
             default:
               _paymentsRepository.createTransaction(
