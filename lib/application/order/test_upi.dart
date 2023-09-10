@@ -2,16 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:upi_india/upi_india.dart';
-
-
+// import '/lib/presentation/theme/app_style.dart';
+import 'package:riverpodtemp/presentation/theme/app_style.dart';
 
 class UPIPage extends StatefulWidget {
   final onSuccess;
   final paise;
   final txRef;
 
-  const UPIPage({required this.onSuccess,required this.paise,required this.txRef});
-  
+  const UPIPage(
+      {required this.onSuccess, required this.paise, required this.txRef});
+
   @override
   _UPIPageState createState() => _UPIPageState();
 }
@@ -43,7 +44,8 @@ class _UPIPageState extends State<UPIPage> {
     super.initState();
   }
 
-  Future<UpiResponse> initiateTransaction(UpiApp app,{String txRef = "TestingUpiIndiaPlugin",double amt = 1}) async {
+  Future<UpiResponse> initiateTransaction(UpiApp app,
+      {String txRef = "TestingUpiIndiaPlugin", double amt = 1}) async {
     return _upiIndia.startTransaction(
       app: app,
       receiverUpiId: "pay9417243077@paytm",
@@ -121,8 +123,8 @@ class _UPIPageState extends State<UPIPage> {
     switch (status) {
       case UpiPaymentStatus.SUCCESS:
         Timer(Duration(seconds: 2), () {
-           Navigator.of(context).pop("success");
-         });
+          Navigator.of(context).pop("success");
+        });
         print('Transaction Successful');
         break;
       case UpiPaymentStatus.SUBMITTED:
@@ -130,13 +132,13 @@ class _UPIPageState extends State<UPIPage> {
         break;
       case UpiPaymentStatus.FAILURE:
         Timer(Duration(seconds: 2), () {
-           Navigator.of(context).pop("failure");
-         });
+          Navigator.of(context).pop("failure");
+        });
         break;
       default:
         Timer(Duration(seconds: 2), () {
-           Navigator.of(context).pop("failure");
-         });
+          Navigator.of(context).pop("failure");
+        });
         print('Received an Unknown transaction status');
     }
   }
@@ -161,9 +163,13 @@ class _UPIPageState extends State<UPIPage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async { Navigator.of(context).pop("failure"); return false; },
+      onWillPop: () async {
+        Navigator.of(context).pop("failure");
+        return false;
+      },
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Style.brandGreen.withOpacity(0.75),
           title: Text('Pay Via UPI..'),
         ),
         body: Column(
@@ -174,10 +180,11 @@ class _UPIPageState extends State<UPIPage> {
             Expanded(
               child: FutureBuilder(
                 future: _transaction,
-                builder: (BuildContext context, AsyncSnapshot<UpiResponse> snapshot) {
+                builder: (BuildContext context,
+                    AsyncSnapshot<UpiResponse> snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.hasError) {
-                    Navigator.of(context).pop("failure");
+                      Navigator.of(context).pop("failure");
                       return Center(
                         child: Text(
                           _upiErrorHandler(snapshot.error.runtimeType),
@@ -185,11 +192,11 @@ class _UPIPageState extends State<UPIPage> {
                         ), // Print's text message on screen
                       );
                     }
-    
+
                     // If we have data then definitely we will have UpiResponse.
                     // It cannot be null
                     UpiResponse _upiResponse = snapshot.data!;
-    
+
                     // Data in UpiResponse can be null. Check before printing
                     String txnId = _upiResponse.transactionId ?? 'N/A';
                     String resCode = _upiResponse.responseCode ?? 'N/A';
@@ -197,7 +204,7 @@ class _UPIPageState extends State<UPIPage> {
                     String status = _upiResponse.status ?? 'N/A';
                     String approvalRef = _upiResponse.approvalRefNo ?? 'N/A';
                     _checkTxnStatus(status);
-    
+
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -206,7 +213,8 @@ class _UPIPageState extends State<UPIPage> {
                           displayTransactionData('Transaction Id', txnId),
                           displayTransactionData('Response Code', resCode),
                           displayTransactionData('Reference Id', txnRef),
-                          displayTransactionData('Status', status.toUpperCase()),
+                          displayTransactionData(
+                              'Status', status.toUpperCase()),
                           displayTransactionData('Approval No', approvalRef),
                         ],
                       ),
