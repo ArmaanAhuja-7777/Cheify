@@ -44,7 +44,7 @@ dependencies:
   top_snackbar_flutter: ^2.1.1
   sms_autofill: ^2.2.0
   google_fonts: ^4.0.4
-  url_launcher: ^6.1.11
+  url_launcher: ^6.1.14
   flutter_svg: ^2.0.5
   flutter_remix: ^0.0.3
   connectivity_plus: ^4.0.0
@@ -76,6 +76,7 @@ dependencies:
   firebase_core: ^2.1.0
   firebase_auth: ^4.0.2
   upi_india: ^3.0.1
+  android_intent_plus: ^4.0.2
 
 
 dev_dependencies:

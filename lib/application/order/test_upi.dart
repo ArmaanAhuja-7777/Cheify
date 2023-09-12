@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:upi_india/upi_india.dart';
 
+import 'package:android_intent_plus/android_intent.dart';
+import 'package:android_intent_plus/flag.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class UPIPage extends StatefulWidget {
@@ -10,8 +13,9 @@ class UPIPage extends StatefulWidget {
   final paise;
   final txRef;
 
-  const UPIPage({required this.onSuccess,required this.paise,required this.txRef});
-  
+  const UPIPage(
+      {required this.onSuccess, required this.paise, required this.txRef});
+
   @override
   _UPIPageState createState() => _UPIPageState();
 }
@@ -33,6 +37,7 @@ class _UPIPageState extends State<UPIPage> {
 
   @override
   void initState() {
+    _upiFullTest();
     _upiIndia.getAllUpiApps(mandatoryTransactionId: false).then((value) {
       setState(() {
         apps = value;
@@ -43,17 +48,53 @@ class _UPIPageState extends State<UPIPage> {
     super.initState();
   }
 
-  Future<UpiResponse> initiateTransaction(UpiApp app,{String txRef = "TestingUpiIndiaPlugin",double amt = 1}) async {
+//  void _upiFullTest() {
+
+//   var uriIntent = Uri.parse("upi://pay?pa=7973252563@okbizaxis&pn=ARMAAN AHUJA&mc=5812&aid=uGICAgMCOmPOyGQ&tr=BCR2DN4TW2ZNDHBC").toString();
+
+//     const intent = AndroidIntent(
+//       action: 'action_view',
+//       data: Uri.encodeFull("https://google.com"),
+//       flags: <int>[Flag.FLAG_ACTIVITY_NEW_TASK],
+
+//     );
+//     intent.launch();
+//   }
+
+
+  Future<void> _launchInBrowser() async {
+    if (!await launchUrl(
+      Uri.parse(
+            'upi://pay?pa=goyal.dev@paytm&pn=PaytmUser&mc=0000&mode=02&purpose=00&orgid=159761&am=1.00'),
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw Exception('Could not launch');
+    }
+  }
+
+  void _upiFullTest() {
+    final intent = AndroidIntent(
+        action: 'action_view',
+        flags: <int>[Flag.FLAG_ACTIVITY_NEW_TASK],
+        data: Uri.encodeFull(
+            'upi://pay?pa=7973252563@okbizaxis&pn=ARMAAN AHUJA&mc=5812&aid=uGICAgMCOmPOyGQ&tr=BCR2DN4TW2ZNDHBC&am=1.00'));
+    intent.launch();
+    // _launchInBrowser();
+  }
+
+  Future<UpiResponse> initiateTransaction(UpiApp app,
+      {String txRef = "TestingUpiIndiaPlugin", double amt = 1}) async {
     return _upiIndia.startTransaction(
       app: app,
-      receiverUpiId: "pay9417243077@paytm",
-      receiverName: 'Jeona Khan',
-      transactionRefId: '25584584',
-      transactionNote: 'Payment to cheify app.',
+      receiverUpiId: "7973252563@okbizaxis",
+      receiverName:
+          'ARMAAN AHUJA                                                                    ',
+      transactionRefId: 'uGICAgMCOmPOyGQ',
+      // transactionNote: 'O565',
       currency: "INR",
-      // merchantId: "",
+      merchantId: "BCR2DN4TW2ZNDHBC",
       // amount: double.parse(widget.paise.toStringAsFixed(2)),
-      amount: 1.00,
+      amount: 5.00,
     );
   }
 
@@ -121,8 +162,8 @@ class _UPIPageState extends State<UPIPage> {
     switch (status) {
       case UpiPaymentStatus.SUCCESS:
         Timer(Duration(seconds: 2), () {
-           Navigator.of(context).pop("success");
-         });
+          Navigator.of(context).pop("success");
+        });
         print('Transaction Successful');
         break;
       case UpiPaymentStatus.SUBMITTED:
@@ -130,13 +171,13 @@ class _UPIPageState extends State<UPIPage> {
         break;
       case UpiPaymentStatus.FAILURE:
         Timer(Duration(seconds: 2), () {
-           Navigator.of(context).pop("failure");
-         });
+          Navigator.of(context).pop("failure");
+        });
         break;
       default:
         Timer(Duration(seconds: 2), () {
-           Navigator.of(context).pop("failure");
-         });
+          Navigator.of(context).pop("failure");
+        });
         print('Received an Unknown transaction status');
     }
   }
@@ -161,7 +202,10 @@ class _UPIPageState extends State<UPIPage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async { Navigator.of(context).pop("failure"); return false; },
+      onWillPop: () async {
+        Navigator.of(context).pop("failure");
+        return false;
+      },
       child: Scaffold(
         appBar: AppBar(
           title: Text('Pay Via UPI..'),
@@ -174,10 +218,11 @@ class _UPIPageState extends State<UPIPage> {
             Expanded(
               child: FutureBuilder(
                 future: _transaction,
-                builder: (BuildContext context, AsyncSnapshot<UpiResponse> snapshot) {
+                builder: (BuildContext context,
+                    AsyncSnapshot<UpiResponse> snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.hasError) {
-                    Navigator.of(context).pop("failure");
+                      Navigator.of(context).pop("failure");
                       return Center(
                         child: Text(
                           _upiErrorHandler(snapshot.error.runtimeType),
@@ -185,11 +230,11 @@ class _UPIPageState extends State<UPIPage> {
                         ), // Print's text message on screen
                       );
                     }
-    
+
                     // If we have data then definitely we will have UpiResponse.
                     // It cannot be null
                     UpiResponse _upiResponse = snapshot.data!;
-    
+
                     // Data in UpiResponse can be null. Check before printing
                     String txnId = _upiResponse.transactionId ?? 'N/A';
                     String resCode = _upiResponse.responseCode ?? 'N/A';
@@ -197,7 +242,7 @@ class _UPIPageState extends State<UPIPage> {
                     String status = _upiResponse.status ?? 'N/A';
                     String approvalRef = _upiResponse.approvalRefNo ?? 'N/A';
                     _checkTxnStatus(status);
-    
+
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -206,7 +251,8 @@ class _UPIPageState extends State<UPIPage> {
                           displayTransactionData('Transaction Id', txnId),
                           displayTransactionData('Response Code', resCode),
                           displayTransactionData('Reference Id', txnRef),
-                          displayTransactionData('Status', status.toUpperCase()),
+                          displayTransactionData(
+                              'Status', status.toUpperCase()),
                           displayTransactionData('Approval No', approvalRef),
                         ],
                       ),
