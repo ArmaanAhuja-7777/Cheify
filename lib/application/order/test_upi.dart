@@ -3,9 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:upi_india/upi_india.dart';
 
-import 'package:android_intent_plus/android_intent.dart';
-import 'package:android_intent_plus/flag.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 
 class UPIPage extends StatefulWidget {
@@ -48,42 +45,7 @@ class _UPIPageState extends State<UPIPage> {
     super.initState();
   }
 
-//  void _upiFullTest() {
-
-//   var uriIntent = Uri.parse("upi://pay?pa=7973252563@okbizaxis&pn=ARMAAN AHUJA&mc=5812&aid=uGICAgMCOmPOyGQ&tr=BCR2DN4TW2ZNDHBC").toString();
-
-//     const intent = AndroidIntent(
-//       action: 'action_view',
-//       data: Uri.encodeFull("https://google.com"),
-//       flags: <int>[Flag.FLAG_ACTIVITY_NEW_TASK],
-
-//     );
-//     intent.launch();
-//   }
-
-
-  Future<void> _launchInBrowser() async {
-    if (!await launchUrl(
-      Uri.parse(
-            'upi://pay?pa=goyal.dev@paytm&pn=PaytmUser&mc=0000&mode=02&purpose=00&orgid=159761&am=1.00'),
-      mode: LaunchMode.externalApplication,
-    )) {
-      throw Exception('Could not launch');
-    }
-  }
-
-  void _upiFullTest() {
-    final intent = AndroidIntent(
-        action: 'action_view',
-        flags: <int>[Flag.FLAG_ACTIVITY_NEW_TASK],
-        data: Uri.encodeFull(
-            'upi://pay?pa=7973252563@okbizaxis&pn=ARMAAN AHUJA&mc=5812&aid=uGICAgMCOmPOyGQ&tr=BCR2DN4TW2ZNDHBC&am=1.00'));
-    intent.launch();
-    // _launchInBrowser();
-  }
-
-  Future<UpiResponse> initiateTransaction(UpiApp app,
-      {String txRef = "TestingUpiIndiaPlugin", double amt = 1}) async {
+  Future<UpiResponse> initiateTransaction(UpiApp app,{String txRef = "TestingUpiIndiaPlugin",double amt = 1}) async {
     return _upiIndia.startTransaction(
       app: app,
       receiverUpiId: "7973252563@okbizaxis",
@@ -208,6 +170,7 @@ class _UPIPageState extends State<UPIPage> {
       },
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Style.brandGreen.withOpacity(0.75),
           title: Text('Pay Via UPI..'),
         ),
         body: Column(
