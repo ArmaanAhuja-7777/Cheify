@@ -333,7 +333,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                               onTap: () async {
                                 // ignore: deprecated_member_use
                                 await launch(
-                                  "${AppConstants.webUrl}/blog",
+                                  "${AppConstants.webUrl}/blogs",
                                   forceSafariVC: true,
                                   forceWebView: true,
                                   enableJavaScript: true,
@@ -348,7 +348,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                               onTap: () async {
                                 // ignore: deprecated_member_use
                                 await launch(
-                                  "${AppConstants.webUrl}/privacy",
+                                  "${AppConstants.webUrl}/privacy-policy",
                                   forceSafariVC: true,
                                   forceWebView: true,
                                   enableJavaScript: true,
@@ -362,22 +362,22 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                               onTap: () async {
                                 // ignore: deprecated_member_use
                                 await launch(
-                                  "${AppConstants.webUrl}/terms",
+                                  "${AppConstants.webUrl}/terms-and-conditions",
                                   forceSafariVC: true,
                                   forceWebView: true,
                                   enableJavaScript: true,
                                 );
                               },
                             ),
-                            ProfileItem(
-                              isLtr: isLtr,
-                              title: AppHelpers.getTranslation(
-                                  TrKeys.signUpToDeliver),
-                              icon: FlutterRemix.external_link_line,
-                              onTap: () {
-                                context.pushRoute(const HelpRoute());
-                              },
-                            ),
+                            // ProfileItem(
+                            //   isLtr: isLtr,
+                            //   title: AppHelpers.getTranslation(
+                            //       TrKeys.signUpToDeliver),
+                            //   icon: FlutterRemix.external_link_line,
+                            //   onTap: () {
+                            //     context.pushRoute(const HelpRoute());
+                            //   },
+                            // ),
                             ProfileItem(
                               isLtr: isLtr,
                               title: AppHelpers.getTranslation(

@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:upi_india/upi_india.dart';
-
-
+import 'package:riverpodtemp/presentation/theme/app_style.dart';
 
 class UPIPage extends StatefulWidget {
   final onSuccess;
@@ -34,7 +33,7 @@ class _UPIPageState extends State<UPIPage> {
 
   @override
   void initState() {
-    _upiFullTest();
+    // _upiFullTest();
     _upiIndia.getAllUpiApps(mandatoryTransactionId: false).then((value) {
       setState(() {
         apps = value;
@@ -45,16 +44,17 @@ class _UPIPageState extends State<UPIPage> {
     super.initState();
   }
 
-  Future<UpiResponse> initiateTransaction(UpiApp app,{String txRef = "TestingUpiIndiaPlugin",double amt = 1}) async {
+  Future<UpiResponse> initiateTransaction(UpiApp app,
+      {String txRef = "TestingUpiIndiaPlugin", double amt = 1}) async {
     return _upiIndia.startTransaction(
       app: app,
       receiverUpiId: "7973252563@okbizaxis",
-      receiverName:
-          'ARMAAN AHUJA                                                                    ',
-      transactionRefId: 'uGICAgMCOmPOyGQ',
-      // transactionNote: 'O565',
+      receiverName: 'ARMAAN AHUJA',
+      transactionRefId: 'CICAgNDZt_ibfQ',
+      transactionNote: 'O565',
       currency: "INR",
       merchantId: "BCR2DN4TW2ZNDHBC",
+
       // amount: double.parse(widget.paise.toStringAsFixed(2)),
       amount: 5.00,
     );
