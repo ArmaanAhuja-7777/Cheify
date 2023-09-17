@@ -50,13 +50,13 @@ class _UPIPageState extends State<UPIPage> {
       app: app,
       receiverUpiId: "7973252563@okbizaxis",
       receiverName: 'ARMAAN AHUJA',
-      transactionRefId: 'CICAgNDZt_ibfQ',
+      transactionRefId: 'BCR2DN4TW2ZNDHBC',
       transactionNote: 'O565',
       currency: "INR",
-      merchantId: "BCR2DN4TW2ZNDHBC",
+      // merchantId: "BCR2DN4TW2ZNDHBC",
 
       // amount: double.parse(widget.paise.toStringAsFixed(2)),
-      amount: 5.00,
+      amount: 1.00,
     );
   }
 
