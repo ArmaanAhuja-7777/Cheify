@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -23,6 +24,8 @@ import '../../infrastructure/services/app_connectivity.dart';
 import '../../infrastructure/services/app_helpers.dart';
 import 'order_state.dart';
 import 'package:intl/intl.dart' as intl;
+
+import 'razorpay_flutter.dart';
 
 class OrderNotifier extends StateNotifier<OrderState> {
   final OrdersRepositoryFacade _orderRepository;
@@ -358,36 +361,69 @@ class OrderNotifier extends StateNotifier<OrderState> {
                 txRef: paymentId,
               )),
     );
-    
+
     if (!mounted) return false;
 
     // if (result == "failure") {
     //   startUpiPayment(context, totalPrice, paymentId);
     // }
 
-    if(result == "success"){
-       return true;
-    }else{
+    if (result == "success") {
+      return true;
+    } else {
       return false;
     }
   }
 
   Future createOrder(BuildContext context, OrderBodyData data, int paymentId,
-      String tag, num totalPrice) async {
+      String tag, num totalPrice,
+      {bool flag = false}) async {
     final connected = await AppConnectivity.connectivity();
     if (connected) {
       state = state.copyWith(isButtonLoading: true);
       final num wallet = LocalStorage.instance.getWalletData()?.price ?? 0;
 
       if (tag == "UPI") {
-      var data = await startUpiPayment(context, totalPrice, paymentId);
-      if(!data){
-      state = state.copyWith(isButtonLoading: false);
-        ScaffoldMessenger.of(context)
-      ..removeCurrentSnackBar()
-      ..showSnackBar(SnackBar(content: Text('UPI Payment Failed')));
-      return;
-      }        
+        var data = await startUpiPayment(context, totalPrice, paymentId);
+        if (!data) {
+          state = state.copyWith(isButtonLoading: false);
+          ScaffoldMessenger.of(context)
+            ..removeCurrentSnackBar()
+            ..showSnackBar(SnackBar(content: Text('UPI Payment Failed')));
+          return;
+        }
+      }
+
+      if (tag == "razorpay") {
+        // var data = await startUpiPayment(context, totalPrice, paymentId);
+        Razorpay razorpay = Razorpay();
+        var options = {
+          'key': 'rzp_test_JCogGr6nrS7s3C',
+          'amount': (totalPrice * 100).toInt(),
+          'name': 'Cheify ',
+          'description': 'Payment to App',
+          'retry': {'enabled': true, 'max_count': 1},
+          'send_sms_hash': true,
+          'prefill': {'contact': '8888888888', 'email': 'test@razorpay.com'},
+          // 'external': {
+          //   'wallets': ['paytm']
+          // }
+        };
+
+        flag = await razorpay.open(options);
+        if (!flag) {
+          AppHelpers.showCheckTopSnackBarError(
+              context, AppHelpers.getTranslation("Razorpay Payment failed"));
+          state = state.copyWith(isButtonLoading: false);
+          return;
+        }
+        // if (!data) {
+        //   state = state.copyWith(isButtonLoading: false);
+        //   ScaffoldMessenger.of(context)
+        //     ..removeCurrentSnackBar()
+        //     ..showSnackBar(SnackBar(content: Text('Razorpay Payment Failed')));
+        //   return;
+        // }
       }
 
       if (tag == "wallet" && wallet < totalPrice) {
@@ -434,11 +470,11 @@ class OrderNotifier extends StateNotifier<OrderState> {
             case 'razorpay':
               _paymentsRepository.createTransaction(
                   orderId: data.id ?? 0, paymentId: paymentId);
-              await makePayment(
-                context,
-                "razorpay",
-                data.id,
-              );
+              // await makePayment(
+              //   context,
+              //   "razorpay",
+              //   data.id,
+              // );
               break;
             case 'paystack':
               _paymentsRepository.createTransaction(

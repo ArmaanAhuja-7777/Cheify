@@ -110,6 +110,15 @@ class AppHelpers {
     );
   }
 
+  static showCheckTopSnackBarError(BuildContext context, String text) {
+    return showTopSnackBar(
+      context,
+      CustomSnackBar.error(
+        message: text,
+      ),
+    );
+  }
+
   static showCheckTopSnackBarInfo(BuildContext context, String text,
       {VoidCallback? onTap}) {
     return showTopSnackBar(
