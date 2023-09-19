@@ -2,8 +2,23 @@ import 'package:flutter/services.dart';
 import 'package:eventify/eventify.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'dart:io' show Platform;
+import 'dart:convert';
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
+// import '../../infrastructure/models/data/profile_data.dart';
+
+import 'package:http/http.dart' as http;
+import 'package:riverpodtemp/domain/iterface/user.dart';
+import 'package:riverpodtemp/infrastructure/repository/user_repository.dart';
+
+// ProfileData profile = ProfileData();
+
+// String? get phone => _phone;
+// String? get email => _email;
 
 class Razorpay {
+  static final razorPayKey = "rzp_test_JCogGr6nrS7s3C";
+  static final razorPaySecret = "mYV9H3AFI9VOP4o5qc0AvY4x";
   // Response codes from platform
   static const _CODE_PAYMENT_SUCCESS = 0;
   static const _CODE_PAYMENT_ERROR = 1;
@@ -56,6 +71,11 @@ class Razorpay {
     switch (response['type']) {
       case _CODE_PAYMENT_SUCCESS:
         success = true;
+        Map<dynamic, dynamic>? data = response["data"];
+        var payload = PaymentSuccessResponse.fromMap(data!);
+        bool isPaymentSuccessful = verifySignature(payload.orderId ?? "",
+            payload.paymentId ?? "", payload.signature ?? "", razorPaySecret);
+        success = isPaymentSuccessful;
         break;
 
       case _CODE_PAYMENT_ERROR:
@@ -73,6 +93,77 @@ class Razorpay {
     return success;
 
     // _handleResult(response);
+  }
+
+  bool verifySignature(String orderID, String razorpayPaymentID,
+      String razorpaySignature, String secret) {
+    String data = "$orderID|$razorpayPaymentID";
+
+    // Create a HMAC-SHA256 hash of the data using the secret key
+    var hmac = Hmac(sha256, utf8.encode(secret));
+    var digest = hmac.convert(utf8.encode(data));
+
+    // Convert the computed hash to hexadecimal format
+    String computedSignature = digest.toString();
+
+    // Compare the computed signature with the provided razorpaySignature
+    print("SIG:" + computedSignature + " ;;;;; " + razorpaySignature);
+    return computedSignature == razorpaySignature;
+  }
+
+  razorPayApi(num amount, String receiptId) async {
+    var auth =
+        'Basic ' + base64Encode(utf8.encode('$razorPayKey:$razorPaySecret'));
+    var headers = {'content-type': 'application/json', 'Authorization': auth};
+    var request =
+        http.Request('POST', Uri.parse('https://api.razorpay.com/v1/orders'));
+    request.body = json
+        .encode({"amount": amount, "currency": "INR", "receipt": receiptId});
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+    // print(response.statusCode);
+    if (response.statusCode == 200) {
+      return {
+        "status": "success",
+        "body": jsonDecode(await response.stream.bytesToString())
+      };
+    } else {
+      return {"status": "fail", "message": (response.reasonPhrase)};
+    }
+  }
+
+  Future<bool> openSession(
+      {required num amount, required String orderId}) async {
+    amount = (amount * 100).toInt();
+    var order = await createOrder(amount: amount, orderId: orderId);
+    if (order.toString().isNotEmpty) {
+      var options = {
+        'key': razorPayKey, //Razor pay API Key
+        'amount': amount, //in the smallest currency sub-unit.
+        'name': 'Cheify',
+        'order_id': order, // Generate order_id using Orders API
+        'description':
+            'Order From App', //Order Description to be shown in razor pay page
+        // 'timeout': 60, // in seconds
+        // 'prefill': {
+        //   'contact': phone,
+        //   'email': email
+        // } //contact number and email id of user
+      };
+      return await open(options);
+    }
+    return false;
+  }
+
+  createOrder({required num amount, required String orderId}) async {
+    final myData = await razorPayApi(amount, orderId);
+    if (myData["status"] == "success") {
+      print(myData);
+      return myData["body"]["id"];
+    } else {
+      return "";
+    }
   }
 
   /// Handles checkout response from platform
