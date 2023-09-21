@@ -5,16 +5,11 @@ import 'dart:io' show Platform;
 import 'dart:convert';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
-// import '../../infrastructure/models/data/profile_data.dart';
+ 
 
 import 'package:http/http.dart' as http;
 import 'package:riverpodtemp/domain/iterface/user.dart';
 import 'package:riverpodtemp/infrastructure/repository/user_repository.dart';
-
-// ProfileData profile = ProfileData();
-
-// String? get phone => _phone;
-// String? get email => _email;
 
 class Razorpay {
   static final razorPayKey = "rzp_test_JCogGr6nrS7s3C";
@@ -147,8 +142,8 @@ class Razorpay {
             'Order From App', //Order Description to be shown in razor pay page
         // 'timeout': 60, // in seconds
         // 'prefill': {
-        //   'contact': phone,
-        //   'email': email
+        //   'contact': '9123456789',
+        //   'email': 'flutterwings304@gmail.com'
         // } //contact number and email id of user
       };
       return await open(options);
