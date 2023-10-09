@@ -178,7 +178,7 @@ class ShopPageAvatar extends StatelessWidget {
                   : const SizedBox.shrink(),
               bonus != null ? _bonusButton(context) : const SizedBox.shrink(),
               12.verticalSpace,
-              if (AppHelpers.getGroupOrder()) groupOrderButton(context),
+              // if (AppHelpers.getGroupOrder()) groupOrderButton(context),
             ],
           ),
         )

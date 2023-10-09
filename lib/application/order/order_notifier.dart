@@ -26,6 +26,7 @@ import 'order_state.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'razorpay_flutter.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 class OrderNotifier extends StateNotifier<OrderState> {
   final OrdersRepositoryFacade _orderRepository;
@@ -396,7 +397,7 @@ class OrderNotifier extends StateNotifier<OrderState> {
 
       if (tag == "razorpay") {
         // var data = await startUpiPayment(context, totalPrice, paymentId);
-        Razorpay razorpay = Razorpay();
+        // Razorpay razorpay = Razorpay();
         // var options = {
         //   'key': 'rzp_test_JCogGr6nrS7s3C',
         //   'amount': (totalPrice * 100).toInt(),
@@ -412,15 +413,17 @@ class OrderNotifier extends StateNotifier<OrderState> {
 
         // flag = await razorpay.open(options);
 
-        flag = await razorpay.openSession(
-            amount: totalPrice, orderId: paymentId.toString());
+        // flag = await razorpay.openSession(
+        //     amount: totalPrice, orderId: paymentId.toString());
 
-        if (!flag) {
-          AppHelpers.showCheckTopSnackBarError(
-              context, AppHelpers.getTranslation("Razorpay Payment failed"));
-          state = state.copyWith(isButtonLoading: false);
-          return;
-        }
+        // if (!flag) {
+        AppHelpers.showCheckTopSnackBarError(
+            context,
+            AppHelpers.getTranslation(
+                "Online payment can only be done using qr at time of delivery for now."));
+        state = state.copyWith(isButtonLoading: false);
+        return;
+        // }
 
         // if (!data) {
         //   state = state.copyWith(isButtonLoading: false);
@@ -430,6 +433,34 @@ class OrderNotifier extends StateNotifier<OrderState> {
         //   return;
         // }
       }
+
+      // if (tag == "phonepe") {
+      //   // var data = await startUpiPayment(context, totalPrice, paymentId);
+      //   Razorpay razorpay = Razorpay();
+      //   // var options = {
+      //   //   'key': 'rzp_test_JCogGr6nrS7s3C',
+      //   //   'amount': (totalPrice * 100).toInt(),
+      //   //   'name': 'Cheify ',
+      //   //   'description': 'Payment to App',
+      //   //   'retry': {'enabled': true, 'max_count': 1},
+      //   //   'send_sms_hash': true,
+      //   //   'prefill': {'contact': '8888888888', 'email': 'test@razorpay.com'},
+      //   //   // 'external': {
+      //   //   //   'wallets': ['paytm']
+      //   //   // }
+      //   // };
+
+      //   // flag = await razorpay.open(options);
+
+      //   flag = await razorpay.openSession(
+      //       amount: totalPrice, orderId: paymentId.toString());
+
+      //   if (!flag) {
+      //     AppHelpers.showCheckTopSnackBarError(
+      //         context, AppHelpers.getTranslation("Razorpay Payment failed"));
+      //     state = state.copyWith(isButtonLoading: false);
+      //     return;
+      //   }
 
       if (tag == "wallet" && wallet < totalPrice) {
         // ignore: use_build_context_synchronously
