@@ -192,7 +192,7 @@ class AppHelpers {
         return setting.value;
       }
     }
-    return '';
+    return '+917973252563';
   }
 
   static String? getPaymentType() {

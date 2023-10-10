@@ -420,7 +420,7 @@ class OrderNotifier extends StateNotifier<OrderState> {
         AppHelpers.showCheckTopSnackBarError(
             context,
             AppHelpers.getTranslation(
-                "Online payment can only be done using qr at time of delivery for now."));
+                "Online payment can only be done using QR at time of delivery for now."));
         state = state.copyWith(isButtonLoading: false);
         return;
         // }
