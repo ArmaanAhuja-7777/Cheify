@@ -163,7 +163,7 @@ class TrKeys {
   static const String fullName = 'full_name';
   static const String cardNumber = 'card_number';
   static const String addNewCart = 'add_new_card';
-  static const String likeRestaurants = 'Liked Meal Packs';
+  static const String likeRestaurants = 'Liked Products';
   static const String add = 'add';
   static const String groupMember = 'group_member';
   static const String manageOrder = 'manage_order';
@@ -178,14 +178,14 @@ class TrKeys {
   static const String alternativeNumber = 'alternative_number';
   static const String help = 'help';
   static const String setting = 'settings';
-  static const String allRestaurants = 'All Meal Packs';
+  static const String allRestaurants = 'All Products';
   static const String newsOfWeek = 'news_of_the_week';
   static const String popular = 'popular';
   static const String recommended = 'recommended';
   static const String send = 'send';
   static const String resetPasswordText = "reset_password_text";
   static const String resendOtp = 'send_new';
-  static const String sendOtp = 'we_are_send_OTP_code_to';
+  static const String sendOtp = 'we_sent_OTP_code_to+';
   static const String enterOtp = 'enter_OTP_code';
   static const String county = 'country';
   static const String orAccessQuickly = 'or_access_quickly';
@@ -221,7 +221,7 @@ class TrKeys {
   static const String confirmLocation = 'confirm_location';
   static const String title = 'title';
   static const String save = 'save';
-  static const String searchProducts = 'Search your location';
+  static const String searchProducts = 'Search Products';
   static const String all = 'all';
   static const String openNow = 'open_now';
   static const String newKey = 'new';

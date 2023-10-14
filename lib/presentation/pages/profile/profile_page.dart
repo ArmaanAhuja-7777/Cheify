@@ -225,16 +225,16 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                     .pushRoute(const NotificationListRoute());
                               },
                             ),
-                            ProfileItem(
-                              isLtr: isLtr,
-                              title: AppHelpers.getTranslation(
-                                  TrKeys.chatWithAdmin),
-                              icon: FlutterRemix.chat_1_line,
-                              onTap: () {
-                                context.pushRoute(
-                                    ChatRoute(roleId: "admin", name: "Admin"));
-                              },
-                            ),
+                            // ProfileItem(
+                            //   isLtr: isLtr,
+                            //   title: AppHelpers.getTranslation(
+                            //       TrKeys.chatWithAdmin),
+                            //   icon: FlutterRemix.chat_1_line,
+                            //   onTap: () {
+                            //     context.pushRoute(
+                            //         ChatRoute(roleId: "admin", name: "Admin"));
+                            //   },
+                            // ),
                             ProfileItem(
                               isLtr: isLtr,
                               title: AppHelpers.getTranslation(

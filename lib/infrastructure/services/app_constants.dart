@@ -59,8 +59,8 @@ class AppConstants {
       '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';
 
   /// location
-  static const double demoLatitude = 41.304223;
-  static const double demoLongitude = 69.2348277;
+  static const double demoLatitude = 30.4746;
+  static const double demoLongitude = 74.5154;
   static const double pinLoadingMin = 0.116666667;
   static const double pinLoadingMax = 0.611111111;
 
