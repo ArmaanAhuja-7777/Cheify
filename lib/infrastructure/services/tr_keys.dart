@@ -221,7 +221,7 @@ class TrKeys {
   static const String confirmLocation = 'confirm_location';
   static const String title = 'title';
   static const String save = 'save';
-  static const String searchProducts = 'Search Products';
+  static const String searchProducts = 'Search';
   static const String all = 'all';
   static const String openNow = 'open_now';
   static const String newKey = 'new';
