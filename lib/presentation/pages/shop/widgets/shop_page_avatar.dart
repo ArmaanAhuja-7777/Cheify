@@ -327,31 +327,31 @@ class ShopPageAvatar extends StatelessWidget {
           right: 16.w,
           child: Row(
             children: [
-              GestureDetector(
-                onTap: () {
-                  context.pushRoute(ChatRoute(
-                      roleId: shop.id.toString(),
-                      name: shop.translation?.title ?? ""));
-                },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10.r)),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                    child: Container(
-                      width: 40.w,
-                      height: 40.w,
-                      color: Style.unselectedBottomBarItem.withOpacity(1),
-                      child: const Center(
-                        child: Icon(
-                          FlutterRemix.chat_1_line,
-                          color: Style.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              8.horizontalSpace,
+              // GestureDetector(
+              //   onTap: () {
+              //     context.pushRoute(ChatRoute(
+              //         roleId: shop.id.toString(),
+              //         name: shop.translation?.title ?? ""));
+              //   },
+              //   child: ClipRRect(
+              //     borderRadius: BorderRadius.all(Radius.circular(10.r)),
+              //     child: BackdropFilter(
+              //       filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              //       child: Container(
+              //         width: 40.w,
+              //         height: 40.w,
+              //         color: Style.unselectedBottomBarItem.withOpacity(1),
+              //         child: const Center(
+              //           child: Icon(
+              //             FlutterRemix.chat_1_line,
+              //             color: Style.white,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // 8.horizontalSpace,
               GestureDetector(
                 onTap: onLike,
                 child: ClipRRect(
