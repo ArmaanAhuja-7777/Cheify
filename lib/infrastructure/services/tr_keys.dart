@@ -9,7 +9,11 @@ class TrKeys {
   static const String errorWithConnectingToFirebase =
       'error_with_connecting_to_firebase';
   static const String doYouLeaveGroup = 'do_you_leave_group';
+  static const String addressline1 = 'House no / Flat no | (Optional)';
   static const String chatWithAdmin = 'chat_with_admin';
+  static const String addressline2 = 'Road / Area | (Optional) ';
+  static const String addressline3 = 'City / district / zip code | (Optional)';
+
   static const String select = 'select';
   static const String recently = 'recently';
   static const String thankYouForOrder = 'thank_you_for_order';
@@ -22,10 +26,10 @@ class TrKeys {
   static const String youCanOnly = 'you_can_only';
   static const String branches = 'branches';
   static const String notWork = "not_work";
-  static const String emailOrPhoneNumber = "email_or_phone_number";
+  static const String emailOrPhoneNumber = "email or phone number";
   static const String timeSchedule = "time_schedule";
   static const String moreInfo = 'more_info';
-  static const String canNotBeEmpty = 'can_not_be_empty';
+  static const String canNotBeEmpty = 'can not be empty';
   static const String coped = 'copied';
   static const String referralFaq = 'referral_faq';
   static const String ratings = 'ratings';
@@ -155,7 +159,7 @@ class TrKeys {
   static const String comment = 'comment';
   static const String floor = 'floor';
   static const String house = 'house';
-  static const String office = 'office';
+  static const String office = 'adress line 1';
   static const String clearCard1 = 'your_card_below';
   static const String clearCard2 = 'do_you_want_to_delete_it?';
   static const String cvc = 'CVC';
@@ -183,9 +187,10 @@ class TrKeys {
   static const String popular = 'popular';
   static const String recommended = 'recommended';
   static const String send = 'send';
-  static const String resetPasswordText = "reset_password_text";
+  static const String resetPasswordText =
+      "Provide your email or phone and we'll send you code to change your password";
   static const String resendOtp = 'send_new';
-  static const String sendOtp = 'we_sent_OTP_code_to+';
+  static const String sendOtp = 'we sent OTP code to: ';
   static const String enterOtp = 'enter_OTP_code';
   static const String county = 'country';
   static const String orAccessQuickly = 'or_access_quickly';
@@ -217,7 +222,8 @@ class TrKeys {
   static const String continueWithGoogle = 'continue_with_google';
   static const String dontHaveAnAcc = 'dont_have_an_account';
   static const String register = 'register';
-  static const String enterADeliveryAddress = 'enter_a_delivery_address';
+  static const String enterADeliveryAddress =
+      'Select adress by clicking on small arrow at bottom of map';
   static const String confirmLocation = 'confirm_location';
   static const String title = 'title';
   static const String save = 'save';

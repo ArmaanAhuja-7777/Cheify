@@ -48,7 +48,6 @@ class ResetPasswordNotifier extends StateNotifier<ResetPasswordState> {
     state = state.copyWith(showConfirmPassword: !state.showConfirmPassword);
   }
 
-
   checkEmail() {
     return AppValidators.isValidEmail(state.email);
   }
@@ -58,7 +57,7 @@ class ResetPasswordNotifier extends StateNotifier<ResetPasswordState> {
     if (connected) {
       state = state.copyWith(isLoading: true, isSuccess: false);
       await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: state.email,
+        phoneNumber: "+91${state.email}",
         verificationCompleted: (PhoneAuthCredential credential) {},
         verificationFailed: (FirebaseAuthException e) {
           AppHelpers.showCheckTopSnackBar(
@@ -70,10 +69,11 @@ class ResetPasswordNotifier extends StateNotifier<ResetPasswordState> {
         },
         codeSent: (String verificationId, int? resendToken) {
           state = state.copyWith(
-              phone: state.email,
-              isLoading: false,
-              verificationId: verificationId,
-            isSuccess: true,);
+            phone: "+91${state.email}",
+            isLoading: false,
+            verificationId: verificationId,
+            isSuccess: true,
+          );
         },
         codeAutoRetrievalTimeout: (String verificationId) {},
       );

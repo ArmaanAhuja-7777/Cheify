@@ -68,7 +68,7 @@ class ResetPasswordPage extends ConsumerWidget {
                           AppHelpers.getTranslation(TrKeys.resetPasswordText),
                           style: Style.interRegular(
                             size: 14.sp,
-                            color: Style.black,
+                            color: Color.fromARGB(255, 0, 0, 0),
                           ),
                         ),
                         40.verticalSpace,

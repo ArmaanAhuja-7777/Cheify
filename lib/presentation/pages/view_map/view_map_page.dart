@@ -27,6 +27,12 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../../../../application/map/view_map_notifier.dart';
 import '../../../../application/map/view_map_provider.dart';
 
+TextStyle smallerTextStyle = TextStyle(
+  fontSize: 14.0, // Adjust the font size as needed
+  color: Colors.black, // Customize the text color
+  // Add other text style properties as needed
+);
+
 class ViewMapPage extends ConsumerStatefulWidget {
   final bool isShopLocation;
   final int? shopId;
@@ -185,7 +191,7 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                                   ),
                                 );
                               controller.text =
-                                  "${placemarks.address?["country"] ?? ""}, ${placemarks.address?["city"] ?? ""} ${placemarks.address?["state"] ?? placemarks.address?["county"] ?? ""} ";
+                                  "${placemarks.address?["country"] ?? ""}, ${placemarks.address?["city"] ?? ""}, ${placemarks.address?["state"] ?? placemarks.address?["county"] ?? ""} ";
                             });
                             googleMapController!.animateCamera(
                                 CameraUpdate.newLatLngZoom(position, 15));
@@ -248,7 +254,7 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                                 );
                               }
                               controller.text =
-                                  "${placemarks.address?["country"] ?? ""}, ${placemarks.address?["city"] ?? ""} ${placemarks.address?["state"] ?? placemarks.address?["county"] ?? ""} ";
+                                  "${placemarks.address?["city"] ?? placemarks.address?["municipality"] ?? placemarks.address?["town"] ?? placemarks.address?["village"] ?? ""}, ${placemarks.address?["state"] ?? placemarks.address?["county"] ?? placemarks.address?["region"] ?? ""}, ${placemarks.address?["postcode"] ?? ""}, ${placemarks.address?["country"] ?? ""}";
                             });
                           },
                           onCameraMove: (position) {
@@ -311,10 +317,12 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                           color: Style.dragElement,
                         ),
                       ),
-                      16.verticalSpace,
+                      // 16.verticalSpace,
                       TitleAndIcon(
                           title: AppHelpers.getTranslation(
                               TrKeys.enterADeliveryAddress)),
+                      //     title: Text(
+
                       24.verticalSpace,
                       SearchTextField(
                         isRead: true,
@@ -409,7 +417,8 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                                                   textController: office,
                                                   label:
                                                       AppHelpers.getTranslation(
-                                                              TrKeys.office)
+                                                              TrKeys
+                                                                  .addressline1)
                                                           .toUpperCase(),
                                                 ),
                                                 24.verticalSpace,
@@ -417,7 +426,8 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                                                   textController: house,
                                                   label:
                                                       AppHelpers.getTranslation(
-                                                              TrKeys.house)
+                                                              TrKeys
+                                                                  .addressline2)
                                                           .toUpperCase(),
                                                 ),
                                                 24.verticalSpace,
@@ -425,7 +435,8 @@ class _ViewMapPageState extends ConsumerState<ViewMapPage> {
                                                   textController: floor,
                                                   label:
                                                       AppHelpers.getTranslation(
-                                                              TrKeys.floor)
+                                                              TrKeys
+                                                                  .addressline3)
                                                           .toUpperCase(),
                                                 ),
                                                 32.verticalSpace,

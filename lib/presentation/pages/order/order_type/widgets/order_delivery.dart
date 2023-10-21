@@ -102,7 +102,8 @@ class _OrderDeliveryState extends State<OrderDelivery> {
             ),
             20.verticalSpace,
             OutlinedBorderTextField(
-              label: AppHelpers.getTranslation(TrKeys.office).toUpperCase(),
+              label:
+                  AppHelpers.getTranslation(TrKeys.addressline1).toUpperCase(),
               textController: officeController,
               onChanged: (s) {
                 ref.read(orderProvider.notifier).setAddressInfo(office: s);
@@ -110,7 +111,8 @@ class _OrderDeliveryState extends State<OrderDelivery> {
             ),
             16.verticalSpace,
             OutlinedBorderTextField(
-              label: AppHelpers.getTranslation(TrKeys.house).toUpperCase(),
+              label:
+                  AppHelpers.getTranslation(TrKeys.addressline2).toUpperCase(),
               textController: houseController,
               onChanged: (s) {
                 ref.read(orderProvider.notifier).setAddressInfo(house: s);
@@ -118,7 +120,8 @@ class _OrderDeliveryState extends State<OrderDelivery> {
             ),
             16.verticalSpace,
             OutlinedBorderTextField(
-              label: AppHelpers.getTranslation(TrKeys.floor).toUpperCase(),
+              label:
+                  AppHelpers.getTranslation(TrKeys.addressline3).toUpperCase(),
               textController: floorController,
               onChanged: (s) {
                 ref.read(orderProvider.notifier).setAddressInfo(floor: s);

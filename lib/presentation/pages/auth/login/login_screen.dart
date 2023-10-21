@@ -53,7 +53,22 @@ class LoginScreen extends ConsumerWidget {
                         label:
                             AppHelpers.getTranslation(TrKeys.emailOrPhoneNumber)
                                 .toUpperCase(),
-                        onChanged: event.setEmail,
+                        // onChanged: event.setEmail,
+                        onChanged: (input) {
+                          if (input.isNotEmpty) {
+                            // Check if the first character of the input is a digit (0-9) and there's no "@" symbol.
+                            if (input[0].contains(RegExp(r'[0-9]')) &&
+                                !input.contains('@')) {
+                              // Prefix the phone number with "+91".
+                              event.setEmail("+91$input");
+                            } else {
+                              // Input is not a phone number, set it as is.
+                              event.setEmail(input);
+                            }
+                          } else {
+                            event.setEmail(input);
+                          }
+                        },
                         isError: state.isEmailNotValid,
                         descriptionText: state.isEmailNotValid
                             ? AppHelpers.getTranslation(TrKeys.emailIsNotValid)

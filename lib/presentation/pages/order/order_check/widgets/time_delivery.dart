@@ -244,7 +244,7 @@ class _TimeDeliveryState extends ConsumerState<TimeDelivery>
               rightTitle: state.currentIndexOne == 0
                   ? ""
                   : AppHelpers.getTranslation(TrKeys.clear),
-              rightTitleColor: Style.red,
+              rightTitleColor: Style.brandGreen,
               onRightTap: state.currentIndexOne == 0
                   ? () {}
                   : () {
