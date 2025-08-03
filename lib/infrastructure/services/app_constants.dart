@@ -41,22 +41,22 @@ class AppConstants {
   /// api urls
   static const String drawingBaseUrl = 'https://api.openrouteservice.org';
   static const String baseUrl = 'https://cheify.goyalinfocom.com';
-  static const String googleApiKey = "AIzaSyBgNvtPqsuKcgp26ukVPobjKw0Igx2dp5M";
+  static const String googleApiKey = "";
   static const String privacyPolicyUrl = '$baseUrl/privacy-policy';
-  static const String adminPageUrl = 'https://admincheify.goyalinfocom.com';
+  static const String adminPageUrl = 'https:// .goyalinfocom.com';
   static const String webUrl = 'https://sites.google.com/view/cheify';
   static const String firebaseWebKey =
-      'AIzaSyDraEPokcqncELQIoXO2Phy0YZUUIaKqMI';
+      ' ';
   static const String uriPrefix = 'https://foodyman.page.link';
   static const String routingKey =
-      '5b3ce3597851110001cf62480384c1db92764d1b8959761ea2510ac8';
+      ' ';
   static const String androidPackageName = 'com.cheify.service.food';
   static const String iosPackageName = 'com.foodyman.customer';
 
   /// locales
   static const String localeCodeEn = 'en';
   static const String chatGpt =
-      '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';
+      '';
 
   /// location
   static const double demoLatitude = 30.4746;
