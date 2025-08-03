@@ -45,9 +45,9 @@
 		<key>CFBundleVersion</key>
 		<string>$(FLUTTER_BUILD_NUMBER)</string>
 		<key>FacebookAppID</key>
-		<string>3416398941970171</string>
+		<string> </string>
 		<key>FacebookClientToken</key>
-		<string>15bd966f86cacc9ffcd2cf9d3cede9ff</string>
+		<string> </string>
 		<key>FacebookDisplayName</key>
 		<string>Foodyman</string>
 		<key>FirebaseDynamicLinksCustomDomains</key>
