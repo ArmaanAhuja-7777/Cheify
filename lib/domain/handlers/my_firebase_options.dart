@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 class DefaultFirebaseOptions {
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD7wFrcTvgVOZFlTg8SMzagnLsD9wkfCTk',
+    apiKey: '',
     appId: '1:249585646098:android:7853e77a3e40571602b6cb',
     messagingSenderId: '249585646098',
     projectId: 'cheify',
@@ -13,7 +13,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD7wFrcTvgVOZFlTg8SMzagnLsD9wkfCTk',
+    apiKey: ' ',
     appId: '1:249585646098:android:7853e77a3e40571602b6cb',
     messagingSenderId: '249585646098',
     projectId: 'cheify',
