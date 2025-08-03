@@ -12,8 +12,8 @@ import 'package:riverpodtemp/domain/iterface/user.dart';
 import 'package:riverpodtemp/infrastructure/repository/user_repository.dart';
 
 class Razorpay {
-  static final razorPayKey = "rzp_test_JCogGr6nrS7s3C";
-  static final razorPaySecret = "mYV9H3AFI9VOP4o5qc0AvY4x";
+  static final razorPayKey = " ";
+  static final razorPaySecret = " ";
   // Response codes from platform
   static const _CODE_PAYMENT_SUCCESS = 0;
   static const _CODE_PAYMENT_ERROR = 1;
